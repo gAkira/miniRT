@@ -6,75 +6,77 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:44:20 by galves-d          #+#    #+#             */
-/*   Updated: 2021/02/27 23:41:36 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/04 21:45:34 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	free_split(char ***s)
+static void	get_args(int argc, char **argv, t_args *args)
 {
-	int	i;
+	char **fname;
+	char **flag;
 
-	if (!s)
+	if (!argv || !*argv)
 		return ;
-	i = 0;
-	while (*s && (*s)[i])
-		free((*s)[i++]);
-	free(*s);
+	fname = ft_split(argv[1], ' ');
+	if (!fname || !*fname)
+	{
+		ft_free_split(&fname);
+		return ;
+	}
+	args->filename = ft_strdup(fname[0]);
+	ft_free_split(&fname);
+	if (argc > 2)
+	{
+		flag = ft_split(argv[2], ' ');
+		if (!flag || !*flag)
+		{
+			ft_free_split(&flag);
+			return ;
+		}
+		if (!ft_strncmp(flag[0], "--save", ft_strlen("--save") + 1))
+			args->save = true;
+		ft_free_split(&flag);
+	}
 }
 
-static bool	end_with_rt(char *argv)
+static bool	end_with_rt(char *filename)
 {
 	int		len;
-	char	**filename;
 
-	if (!argv)
+	if (!filename)
 		return (false);
-	filename = ft_split(argv, ' ');
-	if (!filename || !*filename)
-	{
-		free_split(&filename);
-		return (false);
-	}
-	len = ft_strlen(filename[0]);
-	if (len > 3 && filename[0][len - 3] == '.' && \
-		filename[0][len - 2] == 'r' && filename[0][len - 1] == 't')
-	{
-		free_split(&filename);
+	len = ft_strlen(filename);
+	if (len > 3 && filename[len - 3] == '.' && \
+		filename[len - 2] == 'r' && filename[len - 1] == 't')
 		return (true);
-	}
-	free_split(&filename);
 	return (false);
 }
 
-static bool	file_exists(char *argv)
+static bool	file_exists(char *filename)
 {
 	int		fd;
-	char	**filename;
 
-	filename = ft_split(argv, ' ');
-	fd = open(filename[0], O_RDONLY);
-	if (fd == -1)
-	{
-		free_split(&filename);
+	if (!filename)
 		return (false);
-	}
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (false);
 	close(fd);
-	free_split(&filename);
 	return (true);
 }
 
-int			validate_args(int argc, char **argv)
+t_error		validate_args(int argc, char **argv, t_args *args)
 {
-	char	*file;
-
-	file = argv[1];
+	args->filename = NULL;
+	args->save = false;
 	if (!(argc - 1))
-		return (1);
-	if (!end_with_rt(file))
-		return (2);
-	if (!file_exists(file))
-		return (3);
+		return (NOT_ENOUGH_ARGS);
+	get_args(argc, argv, args);
+	if (!end_with_rt(args->filename))
+		return (NOT_RT_FILE);
+	if (!file_exists(args->filename))
+		return (NO_FILE);
 	return (0);
 }

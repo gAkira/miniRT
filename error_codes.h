@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   error_codes.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/04 21:44:13 by galves-d         ###   ########.fr       */
+/*   Created: 2021/03/02 22:03:17 by galves-d          #+#    #+#             */
+/*   Updated: 2021/03/04 21:28:59 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef ERROR_CODES_H
+# define ERROR_CODES_H
 
-# include "mlx.h"
-# include "vec3.h"
-# include "libft.h"
-# include "error_codes.h"
 # include "typedefs.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include <errno.h>
 
-t_error	validate_args(int argc, char **argv, t_args *args);
-//t_error	validate_rt_file(t_args args)
-void	free_args(t_args args);
+extern char		*g_errormsgs[__ERRMAX];
+
+void	error_handler(t_error error, t_args args);
 
 #endif

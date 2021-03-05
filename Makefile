@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/02/27 22:04:36 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/04 21:23:02 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME		=	miniRT
 # Files needed to build this project
 SRCS_FILES	=	minirt.c			\
 				error_handler.c		\
-				validate_args.c
+				validate_args.c		\
+				free_args.c
 
 # Location of the dependencies used
 SRCS_DIR	=	.
@@ -37,7 +38,7 @@ LIBMLX		=	libmlx.a
 LIBVEC3		=	libvec3.a
 LIBS_DIR	=	-L$(X_DIR) -L$(MLX_DIR) -L$(VEC3_DIR) -L$(FT_DIR)
 LIBS		=	-lbsd -lmlx -lXext -lX11 -lvec3 -lm -lft
-INCS_DIR	=	-I$(MLX_DIR) -I$(VEC3_DIR) -I$(FT_DIR)
+INCS_DIR	=	-I. -I$(MLX_DIR) -I$(VEC3_DIR) -I$(FT_DIR)
 
 # Apply path to source files and object ones
 SRCS		=	$(patsubst %.c, $(SRCS_DIR)/%.c, $(SRCS_FILES))

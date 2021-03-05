@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/04 21:44:13 by galves-d         ###   ########.fr       */
+/*   Created: 2021/03/04 22:27:20 by galves-d          #+#    #+#             */
+/*   Updated: 2021/03/04 22:44:42 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "libft.h"
 
-# include "mlx.h"
-# include "vec3.h"
-# include "libft.h"
-# include "error_codes.h"
-# include "typedefs.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_realloc(void *ptr, size_t size)
+{
+	void	*new_ptr;
 
-t_error	validate_args(int argc, char **argv, t_args *args);
-//t_error	validate_rt_file(t_args args)
-void	free_args(t_args args);
-
-#endif
+	if (size == 0)
+		return (NULL);
+	if (!ptr)
+		return (malloc(size));
+	new_ptr = malloc(size);
+	ft_memmove(new_ptr, ptr, size);
+	free(ptr);
+	return (new_ptr);
+}

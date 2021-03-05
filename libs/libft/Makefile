@@ -6,7 +6,7 @@
 #    By: galves-d <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/21 21:31:56 by galves-d          #+#    #+#              #
-#    Updated: 2020/03/05 20:05:22 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/04 22:24:08 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,10 @@ SRCS	=		ft_memset.c			\
 									\
 				ft_itoa_base.c		\
 				ft_itoa_base_s.c	\
-				ft_itoa_base_u.c
+				ft_itoa_base_u.c	\
+				ft_atof.c			\
+				ft_free_split.c		\
+				ft_realloc.c
 
 OBJS		=	$(patsubst %.c, %.o, $(SRCS))
 

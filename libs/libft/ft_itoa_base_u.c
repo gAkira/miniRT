@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:05:54 by galves-d          #+#    #+#             */
-/*   Updated: 2021/02/27 22:19:02 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/02 21:58:19 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char		*ft_itoa_base_u(unsigned long int nbr, const char *base,
 	num = NULL;
 	if (ft_strlen(base) < 2)
 		return (NULL);
-	sign =  1;
+	sign = 1;
 	u_nbr = nbr;
 	if (u_nbr == 0)
 		return (ft_substr(base, 0, 1));
