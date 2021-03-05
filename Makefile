@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/04 21:23:02 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/05 20:56:27 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ NAME		=	miniRT
 SRCS_FILES	=	minirt.c			\
 				error_handler.c		\
 				validate_args.c		\
-				free_args.c
+				free_args.c			\
+				validate_objs.c		\
+				validate_rt_file.c
 
 # Location of the dependencies used
 SRCS_DIR	=	.

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:44:20 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/04 21:45:34 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/05 14:50:53 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ static bool	file_exists(char *filename)
 
 t_error		validate_args(int argc, char **argv, t_args *args)
 {
-	args->filename = NULL;
-	args->save = false;
+	ft_bzero(args, sizeof(t_args));
 	if (!(argc - 1))
 		return (NOT_ENOUGH_ARGS);
 	get_args(argc, argv, args);

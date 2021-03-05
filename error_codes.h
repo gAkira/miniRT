@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 22:03:17 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/04 21:28:59 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/05 20:55:21 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "typedefs.h"
 # include <errno.h>
 
-extern char		*g_errormsgs[__ERRMAX];
+# define STDERR_FD 2
+
+extern char		*g_errormsgs[__MAX_ERROR];
 
 void	error_handler(t_error error, t_args args);
 

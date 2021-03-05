@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:52:00 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/04 22:25:06 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/05 21:38:30 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char			*ft_itoa_base_u(unsigned long int nbr, const char *base,
 									int is_signed);
 double			ft_atof(const char *s);
 void			ft_free_split(char ***s);
-void			*ft_realloc(void *ptr, size_t size);
+void			*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 
 /*
 **		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
