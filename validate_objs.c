@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 19:49:25 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 21:47:37 by galves-d         ###   ########.fr       */
+/*   Created: 2021/03/05 22:21:15 by galves-d          #+#    #+#             */
+/*   Updated: 2021/03/05 23:10:21 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,13 @@ static bool	valid_identifiers(char ***file)
 	return (true);
 }
 
-static bool	valid_quantity(char ***file, char *id, int max)
+t_error		validate_objs(char ***file)
 {
-	int		i;
-	int		id_count;
+	t_error	error;
 
-	i = 0;
-	id_count = 0;
-	while (file[i])
-	{
-		if (!ft_strncmp(file[i][0], id, ft_strlen(id) + 1))
-			id_count++;
-		i++;
-	}
-	return (id_count <= max);
-}
-
-t_error		validate_res_amb(char ***file)
-{
 	if (!valid_identifiers(file))
 		return (INVALID_IDENTIFIER);
-	if (!valid_quantity(file, "R", 1))
-		return (INVALID_QUANTITY_RES);
-	if (!valid_quantity(file, "A", 1))
-		return (INVALID_QUANTITY_AMB);
-	return (NO_ERROR);
+	if (!(error = validate_res_amb(file)))
+		return (error);
+	return (error);
 }

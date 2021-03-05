@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 21:08:14 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/05 22:41:07 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char			*g_errormsgs[__MAX_ERROR] = {
 	"There is an invalid identifier in the scene file.",
 	"There is more than one instance of the resolution (R).",
 	"There is more than one instance of the ambient lightning (A).",
+	"Wrong number of arguments in resolution (R).",
+	"Wrong number of arguments in ambient lightning (A).",
 };
 
 void	error_handler(t_error error, t_args args)

@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/05 20:56:27 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/05 23:12:52 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRCS_FILES	=	minirt.c			\
 				error_handler.c		\
 				validate_args.c		\
 				free_args.c			\
+				in_range.c			\
+				validate_res_amb.c	\
 				validate_objs.c		\
 				validate_rt_file.c
 

@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
+/*   in_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 21:26:46 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 23:05:04 by galves-d         ###   ########.fr       */
+/*   Created: 2021/03/05 22:13:20 by galves-d          #+#    #+#             */
+/*   Updated: 2021/03/05 22:18:00 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEFS_H
-# define TYPEDEFS_H
+#include "minirt.h"
 
-# include <stdbool.h>
-
-typedef struct	s_args
+bool	in_range(int num, int min, int max)
 {
-	char	*filename;
-	bool	save;
-	char	***file;
-}				t_args;
+	return (num >= min && num <= max);
+}
 
-typedef enum	e_error
+bool	in_rangef(double num, double min, double max)
 {
-	NO_ERROR,
-	NOT_ENOUGH_ARGS,
-	NOT_RT_FILE,
-	NO_FILE,
-	INVALID_IDENTIFIER,
-	INVALID_QUANTITY_RES,
-	INVALID_QUANTITY_AMB,
-	WRONG_NUM_ARGS_RES,
-	WRONG_NUM_ARGS_AMB,
-	__MAX_ERROR
-}				t_error;
-
-#endif
+	return (num >= min && num <= max);
+}

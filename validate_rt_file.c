@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:24:05 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 21:37:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/05 22:22:32 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_error		validate_rt_file(t_args *args)
 		return (NO_FILE);
 	store_file_in_blocks(fd, args);
 	close(fd);
-	if ((error = validate_res_amb(args->file)))
+	if ((error = validate_objs(args->file)))
 		return (error);
 	return (error);
 }
