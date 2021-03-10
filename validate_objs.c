@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 22:21:15 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 20:01:08 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/10 23:48:32 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ t_error		validate_objs(t_args *args)
 	if (!valid_identifiers(args->file))
 		return (INVALID_IDENTIFIER);
 	organize_identifiers(args);
-	if (!(error = validate_res_amb(args->file)))
+	if ((error = validate_res(args->res)))
+		return (error);
+	if ((error = validate_res_amb(args->file)))
 		return (error);
 	return (error);
 }

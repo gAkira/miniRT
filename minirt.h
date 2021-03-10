@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 19:47:06 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/10 23:28:56 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool	is_allocated_flag(size_t alloc, size_t mask);
 t_error	validate_args(int argc, char **argv, t_args *args);
 t_error	validate_rt_file(t_args *args);
 t_error	validate_objs(t_args *args);
+t_error	validate_res(char ***res);
 t_error	validate_res_amb(char ***file);
 void	free_args(t_args *args);
 

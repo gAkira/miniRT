@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/10 17:18:34 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/10 23:29:44 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS_FILES	=	main.c				\
 				free_args.c			\
 				in_range.c			\
 				allocation_flags.c	\
+				validate_res.c		\
 				validate_res_amb.c	\
 				validate_objs.c		\
 				validate_rt_file.c

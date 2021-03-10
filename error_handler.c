@@ -6,22 +6,26 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 19:46:01 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/10 23:12:30 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 char			*g_errormsgs[__MAX_ERROR] = {
-	"No error",
+	"No error.",
 	"Usage: ./miniRT <filename>.rt [--save]\nNot enough args.",
 	"File provided is not a scene file: <filename>.rt",
 	"File provided doesn't exist or you don't have permission to read it.",
 	"There is an invalid identifier in the scene file.",
 	"There is more than one instance of the resolution (R).",
-	"There is more than one instance of the ambient lightning (A).",
 	"Wrong number of arguments in resolution (R).",
+	"Bad format of arguments in resolution (R).",
+	"Wrong argument range in resolution (R).",
+	"There is more than one instance of the ambient lightning (A).",
 	"Wrong number of arguments in ambient lightning (A).",
+	"Bad format of arguments in ambient lightning (A).",
+	"Wrong argument range in ambient lightning (A).",
 };
 
 void	error_handler(t_error error, t_args *args)
