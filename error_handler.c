@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 22:41:07 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:46:01 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char			*g_errormsgs[__MAX_ERROR] = {
 	"Wrong number of arguments in ambient lightning (A).",
 };
 
-void	error_handler(t_error error, t_args args)
+void	error_handler(t_error error, t_args *args)
 {
 	if (error)
 	{

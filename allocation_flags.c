@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_codes.h                                      :+:      :+:    :+:   */
+/*   allocation_flags.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 22:03:17 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 19:46:55 by galves-d         ###   ########.fr       */
+/*   Created: 2021/03/10 15:34:26 by galves-d          #+#    #+#             */
+/*   Updated: 2021/03/10 17:18:24 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_CODES_H
-# define ERROR_CODES_H
+#include "minirt.h"
 
-# include "typedefs.h"
-# include <errno.h>
+void	allocate_flag(size_t *alloc, size_t mask)
+{
+	*alloc |= mask;
+}
 
-# define STDERR_FD 2
+void	deallocate_flag(size_t *alloc, size_t mask)
+{
+	*alloc &= ~mask;
+}
 
-extern char		*g_errormsgs[__MAX_ERROR];
-
-void	error_handler(t_error error, t_args *args);
-
-#endif
+bool	is_allocated_flag(size_t alloc, size_t mask)
+{
+	return (!!(alloc & mask));
+}
