@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 23:28:56 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/12 22:51:12 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "error_codes.h"
 # include "typedefs.h"
 # include <fcntl.h>
+# include <float.h>
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -35,7 +36,14 @@ t_error	validate_args(int argc, char **argv, t_args *args);
 t_error	validate_rt_file(t_args *args);
 t_error	validate_objs(t_args *args);
 t_error	validate_res(char ***res);
-t_error	validate_res_amb(char ***file);
+t_error	validate_amb(char ***amb);
+t_error	validate_c(char ***c);
+t_error	validate_l(char ***l);
+t_error	validate_sp(char ***sp);
+t_error	validate_pl(char ***pl);
+t_error	validate_sq(char ***sq);
+t_error	validate_cy(char ***cy);
+t_error	validate_tr(char ***tr);
 void	free_args(t_args *args);
 
 #endif

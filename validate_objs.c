@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 22:21:15 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 23:48:32 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/12 22:50:45 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,21 @@ t_error		validate_objs(t_args *args)
 	organize_identifiers(args);
 	if ((error = validate_res(args->res)))
 		return (error);
-	if ((error = validate_res_amb(args->file)))
+	if ((error = validate_amb(args->amb)))
+		return (error);
+	if ((error = validate_c(args->c)))
+		return (error);
+	if ((error = validate_l(args->l)))
+		return (error);
+	if ((error = validate_sp(args->sp)))
+		return (error);
+	if ((error = validate_pl(args->pl)))
+		return (error);
+	if ((error = validate_sq(args->sq)))
+		return (error);
+	if ((error = validate_cy(args->cy)))
+		return (error);
+	if ((error = validate_tr(args->tr)))
 		return (error);
 	return (error);
 }
