@@ -6,11 +6,16 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/12 22:30:34 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/13 21:36:50 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+/*
+** Error messages associated to its respective value of error.
+** For more information, see the declaration of t_error.
+*/
 
 char			*g_errormsgs[__MAX_ERROR] = {
 	"No error.",
@@ -58,6 +63,22 @@ char			*g_errormsgs[__MAX_ERROR] = {
 	"Bad format of arguments in triangle (tr)." USAGE_TR_1,
 	"Wrong argument range in triangle (tr)." USAGE_TR_2_0 USAGE_TR_2_1,
 };
+
+/*
+** Function name:
+**    error_handler
+** Description:
+**    Receives a error value and take its decision
+**       [NO_ERROR] :: nothing happens in the function and the program continues
+**       other values :: show error message, free memory and finish program
+** Params:
+**    t_error error -> error value returned by some other function
+**    t_args *args -> pointer to struct to free memory
+** Return:
+**    bool -> value of the bit asked in mask
+**       [false] :: bit was 0
+**       [true] :: bit was 1
+*/
 
 void	error_handler(t_error error, t_args *args)
 {
