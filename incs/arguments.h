@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:26:46 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:59:18 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 19:26:34 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 
-# define IDENTIFIERS "R,A,c,l,pl,sp,sq,cy,tr"
+# define VALID_IDENTIFIERS "#,R,A,c,l,pl,sp,sq,cy,tr"
 
 typedef enum	e_args_mask
 {

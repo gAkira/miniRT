@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 22:03:17 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:28:48 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:42:38 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ static char		*g_errormsgs[__MAX_ERROR] = {
 	"Wrong number of arguments in triangle (tr)." USAGE_TR_0_0 USAGE_TR_0_1,
 	"Bad format of arguments in triangle (tr)." USAGE_TR_1,
 	"Wrong argument range in triangle (tr)." USAGE_TR_2_0 USAGE_TR_2_1,
+
+	"System ran out of memory and had trouble while allocating memory."
 };
 
 #endif

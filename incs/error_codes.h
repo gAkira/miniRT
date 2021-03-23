@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 02:04:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:26:05 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:41:38 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef enum	e_error
 	WRONG_NUM_ARGS_TR,
 	BAD_FORMAT_TR,
 	WRONG_ARGS_RANGE_TR,
+
+	NO_MEMORY,
 
 	__MAX_ERROR
 }				t_error;

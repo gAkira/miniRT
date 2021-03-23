@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 03:02:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 23:41:08 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "libft.h"
 # include "error_codes.h"
 # include "arguments.h"
+# include "scene.h"
 
 /*
 ** Auxiliary functions
@@ -47,11 +48,26 @@ t_error	validate_res(char ***res);
 t_error	validate_amb(char ***amb);
 t_error	validate_c(char ***c);
 t_error	validate_l(char ***l);
-t_error	validate_sp(char ***sp);
 t_error	validate_pl(char ***pl);
+t_error	validate_sp(char ***sp);
 t_error	validate_sq(char ***sq);
 t_error	validate_cy(char ***cy);
 t_error	validate_tr(char ***tr);
+
+/*
+** Process objects in scene file
+*/
+
+t_error	process_objs(t_args *args, t_scene *scene);
+t_error process_res(char ***res, t_scene *scene);
+t_error process_amb(char ***amb, t_scene *scene);
+t_error process_c(char ***c, t_scene *scene);
+//t_error process_l(char ***l, t_scene *scene);
+//t_error process_pl(char ***pl, t_scene *scene);
+//t_error process_sp(char ***sp, t_scene *scene);
+//t_error process_sq(char ***sq, t_scene *scene);
+//t_error process_cy(char ***cy, t_scene *scene);
+//t_error process_tr(char ***tr, t_scene *scene);
 
 /*
 ** Free memory

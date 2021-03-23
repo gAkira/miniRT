@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:48:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:18:56 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 00:08:28 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,20 @@
 int	main(int argc, char **argv)
 {
 	t_args	args;
+	t_scene	scene;
 
 	error_handler(validate_args(argc, argv, &args), &args);
 	error_handler(validate_rt_file(&args), &args);
-	printf("filename: %s\nsave: %d\n", args.filename, (int)args.save);
+	error_handler(process_objs(&args, &scene), &args);
+	//printf("filename: %s\nsave: %d\n", args.filename, (int)args.save);
+	printf("res:\n\tx: %ld\n\ty: %ld\n", scene.res.x, scene.res.y);
+	printf("amb:\n\tratio: %f\n\tcolor: %d,%d,%d\n", scene.amb.ratio, \
+				scene.amb.color.r, scene.amb.color.g, scene.amb.color.b);
+	printf("camera:\n\tcoord: %f,%f,%f\n\torient: %f,%f,%f\n\tfov: %ld\n", \
+				scene.c[0].coord.x, scene.c[0].coord.y, scene.c[0].coord.z, \
+				scene.c[0].orient.x, scene.c[0].orient.y, scene.c[0].orient.z, \
+				scene.c[0].fov);
+	free(scene.c);
 	free_args(&args);
 	return (0);
 }

@@ -6,12 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:24:05 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:42:16 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:44:04 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/*
 static void	print_argsfile(t_args *args)
 {
 	int	line_len;
@@ -31,6 +32,7 @@ static void	print_argsfile(t_args *args)
 		line_len++;
 	}
 }
+*/
 
 static void	store_file_in_blocks(int fd, t_args *args)
 {
@@ -57,7 +59,7 @@ static void	store_file_in_blocks(int fd, t_args *args)
 	i = 0;
 	while (file[i++])
 		args->file[i - 1] = ft_split(file[i - 1], ' ');
-	print_argsfile(args);
+	//print_argsfile(args);
 	ft_free_split(&file);
 }
 
