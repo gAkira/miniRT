@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 19:44:20 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 17:58:46 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 02:36:26 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_error		validate_args(int argc, char **argv, t_args *args)
 	if (!(argc - 1))
 		return (NOT_ENOUGH_ARGS);
 	get_args(argc, argv, args);
-	allocate_flag(&(args->allocation), ARGS_FILENAME);
+	allocate_flag(&(args->allocation), FILENAME_MASK);
 	if (!end_with_rt(args->filename))
 		return (NOT_RT_FILE);
 	if (!file_exists(args->filename))

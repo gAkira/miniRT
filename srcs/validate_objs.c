@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 22:21:15 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/12 22:50:45 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 02:41:47 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,23 @@ static void	organize_identifiers(t_args *args)
 	while (args->file[i++])
 	{
 		if (!ft_strncmp(args->file[i - 1][0], "R", ft_strlen("R") + 1))
-			store_id(&(args->res), args->file[i - 1], args, ARGS_RES);
+			store_id(&(args->res), args->file[i - 1], args, RES_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "A", ft_strlen("A") + 1))
-			store_id(&(args->amb), args->file[i - 1], args, ARGS_AMB);
+			store_id(&(args->amb), args->file[i - 1], args, AMB_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "c", ft_strlen("c") + 1))
-			store_id(&(args->c), args->file[i - 1], args, ARGS_C);
+			store_id(&(args->c), args->file[i - 1], args, C_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "l", ft_strlen("l") + 1))
-			store_id(&(args->l), args->file[i - 1], args, ARGS_L);
+			store_id(&(args->l), args->file[i - 1], args, L_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "pl", ft_strlen("pl") + 1))
-			store_id(&(args->pl), args->file[i - 1], args, ARGS_PL);
+			store_id(&(args->pl), args->file[i - 1], args, PL_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "sp", ft_strlen("sp") + 1))
-			store_id(&(args->sp), args->file[i - 1], args, ARGS_SP);
+			store_id(&(args->sp), args->file[i - 1], args, SP_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "sq", ft_strlen("sq") + 1))
-			store_id(&(args->sq), args->file[i - 1], args, ARGS_SQ);
+			store_id(&(args->sq), args->file[i - 1], args, SQ_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "cy", ft_strlen("cy") + 1))
-			store_id(&(args->cy), args->file[i - 1], args, ARGS_CY);
+			store_id(&(args->cy), args->file[i - 1], args, CY_MASK);
 		else if (!ft_strncmp(args->file[i - 1][0], "tr", ft_strlen("tr") + 1))
-			store_id(&(args->tr), args->file[i - 1], args, ARGS_TR);
+			store_id(&(args->tr), args->file[i - 1], args, TR_MASK);
 	}
 }
 

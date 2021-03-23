@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:20:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/13 21:53:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 03:36:48 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 **    ---
 */
 
-static void	free_dealloc(void *addr, t_args *args, size_t mask)
+static void	free_dealloc(void *addr, size_t *alloc, t_args_mask mask)
 {
 	free(addr);
-	deallocate_flag(&(args->allocation), mask);
+	deallocate_flag(alloc, mask);
 }
 
 /*
@@ -53,7 +53,7 @@ static void	free_file_and_content(t_args *args)
 		ft_free_split(&(args->file[i]));
 		i++;
 	}
-	free_dealloc(args->file, args, ARGS_FILE);
+	free_dealloc(args->file, &(args->allocation), FILE_MASK);
 }
 
 /*
@@ -69,26 +69,26 @@ static void	free_file_and_content(t_args *args)
 
 void		free_args(t_args *args)
 {
-	if (is_allocated_flag(args->allocation, ARGS_FILENAME))
-		free_dealloc(args->filename, args, ARGS_FILENAME);
-	if (is_allocated_flag(args->allocation, ARGS_FILE))
+	if (is_allocated_flag(args->allocation, FILENAME_MASK))
+		free_dealloc(args->filename, &(args->allocation), FILENAME_MASK);
+	if (is_allocated_flag(args->allocation, FILE_MASK))
 		free_file_and_content(args);
-	if (is_allocated_flag(args->allocation, ARGS_RES))
-		free_dealloc(args->res, args, ARGS_RES);
-	if (is_allocated_flag(args->allocation, ARGS_AMB))
-		free_dealloc(args->amb, args, ARGS_AMB);
-	if (is_allocated_flag(args->allocation, ARGS_C))
-		free_dealloc(args->c, args, ARGS_C);
-	if (is_allocated_flag(args->allocation, ARGS_L))
-		free_dealloc(args->l, args, ARGS_L);
-	if (is_allocated_flag(args->allocation, ARGS_PL))
-		free_dealloc(args->pl, args, ARGS_PL);
-	if (is_allocated_flag(args->allocation, ARGS_SP))
-		free_dealloc(args->sp, args, ARGS_SP);
-	if (is_allocated_flag(args->allocation, ARGS_SQ))
-		free_dealloc(args->sq, args, ARGS_SQ);
-	if (is_allocated_flag(args->allocation, ARGS_CY))
-		free_dealloc(args->cy, args, ARGS_CY);
-	if (is_allocated_flag(args->allocation, ARGS_TR))
-		free_dealloc(args->tr, args, ARGS_TR);
+	if (is_allocated_flag(args->allocation, RES_MASK))
+		free_dealloc(args->res, &(args->allocation), RES_MASK);
+	if (is_allocated_flag(args->allocation, AMB_MASK))
+		free_dealloc(args->amb, &(args->allocation), AMB_MASK);
+	if (is_allocated_flag(args->allocation, C_MASK))
+		free_dealloc(args->c, &(args->allocation), C_MASK);
+	if (is_allocated_flag(args->allocation, L_MASK))
+		free_dealloc(args->l, &(args->allocation), L_MASK);
+	if (is_allocated_flag(args->allocation, PL_MASK))
+		free_dealloc(args->pl, &(args->allocation), PL_MASK);
+	if (is_allocated_flag(args->allocation, SP_MASK))
+		free_dealloc(args->sp, &(args->allocation), SP_MASK);
+	if (is_allocated_flag(args->allocation, SQ_MASK))
+		free_dealloc(args->sq, &(args->allocation), SQ_MASK);
+	if (is_allocated_flag(args->allocation, CY_MASK))
+		free_dealloc(args->cy, &(args->allocation), CY_MASK);
+	if (is_allocated_flag(args->allocation, TR_MASK))
+		free_dealloc(args->tr, &(args->allocation), TR_MASK);
 }

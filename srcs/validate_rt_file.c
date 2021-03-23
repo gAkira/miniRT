@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:24:05 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/10 19:14:09 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/23 02:42:16 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_error		validate_rt_file(t_args *args)
 	if ((fd = open(args->filename, O_RDONLY)) < 0)
 		return (NO_FILE);
 	store_file_in_blocks(fd, args);
-	allocate_flag(&(args->allocation), ARGS_FILE);
+	allocate_flag(&(args->allocation), FILE_MASK);
 	close(fd);
 	if ((error = validate_objs(args)))
 		return (error);
