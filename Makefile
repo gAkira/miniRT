@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/12 22:51:26 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/23 01:47:46 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,9 @@ SRCS_FILES	=	main.c				\
 				validate_rt_file.c
 
 # Location of the dependencies used
-SRCS_DIR	=	.
-OBJS_DIR	=	./obj
+SRCS_DIR	=	./srcs
+INCS_DIR	=	./incs
+OBJS_DIR	=	./objs
 FT_DIR		=	./libs/libft
 MLX_DIR		=	./libs/minilibx-linux
 VEC3_DIR	=	./libs/vec3
@@ -43,15 +44,14 @@ X_DIR		=	/usr/include
 # C Compiler configuration
 CC			=	gcc
 CC_FLAGS	=	-Wall -Wextra -Werror
-OPTM_FLAGS	=	-O3
 
 # Libraries and its location
 LIBFT		=	libft.a
 LIBMLX		=	libmlx.a
 LIBVEC3		=	libvec3.a
-LIBS_DIR	=	-L$(X_DIR) -L$(MLX_DIR) -L$(VEC3_DIR) -L$(FT_DIR)
-LIBS		=	-lbsd -lmlx -lXext -lX11 -lvec3 -lm -lft
-INCS_DIR	=	-I. -I$(MLX_DIR) -I$(VEC3_DIR) -I$(FT_DIR)
+LIBS_DIR_ALL=	-L$(X_DIR) -L$(MLX_DIR) -L$(VEC3_DIR) -L$(FT_DIR)
+LIBS_ALL	=	-lbsd -lmlx -lXext -lX11 -lvec3 -lm -lft
+INCS_ALL	=	-I$(INCS_DIR) -I$(MLX_DIR) -I$(VEC3_DIR) -I$(FT_DIR)
 
 # Apply path to source files and object ones
 SRCS		=	$(patsubst %.c, $(SRCS_DIR)/%.c, $(SRCS_FILES))
@@ -60,11 +60,11 @@ OBJS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS_FILES))
 all:	$(FT_DIR)/$(LIBFT) $(MLX_DIR)/$(LIBMLX) $(VEC3_DIR)/$(LIBVEC3) $(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CC_FLAGS) $^ $(LIBS_DIR) $(LIBS) -o $@
+	$(CC) $(CC_FLAGS) $^ $(LIBS_DIR_ALL) $(LIBS_ALL) -o $@
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	$(CC) $(CC_FLAGS) $(INCS_DIR) -c $< -o $@
+	$(CC) $(CC_FLAGS) $(INCS_ALL) -c $< -o $@
 
 $(FT_DIR)/$(LIBFT):
 	@echo "Making libft . . ."
@@ -109,3 +109,18 @@ fclean:	clean
 re:	fclean all
 
 .PHONY:	all clean fclean re
+
+#		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+#		░░░░░░░░░░▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░░░░░░░░░
+#		░░░░░░░░▄▀░░░░░░░░░░░░▄░░░░░░░▀▄░░░░░░░
+#		░░░░░░░░█░░▄░░░░▄░░░░░░░░░░░░░░█░░░░░░░
+#		░░░░░░░░█░░░░░░░░░░░░▄█▄▄░░▄░░░█░▄▄▄░░░
+#		░▄▄▄▄▄░░█░░░░░░▀░░░░▀█░░▀▄░░░░░█▀▀░██░░
+#		░██▄▀██▄█░░░▄░░░░░░░██░░░░▀▀▀▀▀░░░░██░░
+#		░░▀██▄▀██░░░░░░░░▀░██▀░░░░░░░░░░░░░▀██░
+#		░░░░▀████░▀░░░░▄░░░██░░░▄█░░░░▄░▄█░░██░
+#		░░░░░░░▀█░░░░▄░░░░░██░░░░▄░░░▄░░▄░░░██░
+#		░░░░░░░▄█▄░░░░░░░░░░░▀▄░░▀▀▀▀▀▀▀▀░░▄▀░░
+#		░░░░░░█▀▀█████████▀▀▀▀████████████▀░░░░
+#		░░░░░░████▀░░███▀░░░░░░▀███░░▀██▀░░░░░░
+#		░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
