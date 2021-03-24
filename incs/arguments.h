@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:26:46 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 19:26:34 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:04:26 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,6 @@
 # include <stdbool.h>
 
 # define VALID_IDENTIFIERS "#,R,A,c,l,pl,sp,sq,cy,tr"
-
-typedef enum	e_args_mask
-{
-	FILENAME_MASK,
-	FILE_MASK,
-	RES_MASK,
-	AMB_MASK,
-	C_MASK,
-	L_MASK,
-	PL_MASK,
-	SP_MASK,
-	SQ_MASK,
-	CY_MASK,
-	TR_MASK
-}				t_args_mask;
 
 typedef struct	s_args
 {

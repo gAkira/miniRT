@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 21:20:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 03:36:48 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:05:26 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **    ---
 */
 
-static void	free_dealloc(void *addr, size_t *alloc, t_args_mask mask)
+static void	free_dealloc(void *addr, size_t *alloc, t_mask mask)
 {
 	free(addr);
 	deallocate_flag(alloc, mask);

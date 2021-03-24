@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/23 23:02:51 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/24 22:10:52 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRCS_FILES	=	main.c				\
 				error_handler.c		\
 				validate_args.c		\
 				free_args.c			\
+				free_scene.c		\
 				in_range.c			\
+				numerical.c			\
 				allocation_flags.c	\
 				validate_rt_file.c	\
 				validate_objs.c		\
@@ -34,13 +36,13 @@ SRCS_FILES	=	main.c				\
 				process_objs.c		\
 				process_res.c		\
 				process_amb.c		\
-				process_c.c			
-				#process_l.c			\
-				#process_pl.c		\
-				#process_sp.c		\
-				#process_sq.c		\
-				#process_cy.c		\
-				#process_tr.c
+				process_c.c			\
+				process_l.c			\
+				process_pl.c		\
+				process_sp.c		\
+				process_sq.c		\
+				process_cy.c		\
+				process_tr.c
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs

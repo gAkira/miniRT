@@ -6,32 +6,29 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 16:24:05 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 22:44:04 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 18:40:05 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 /*
-static void	print_argsfile(t_args *args)
-{
-	int	line_len;
-	int	block_len;
-
-	line_len = 0;
-	while (args->file[line_len])
-	{
-		printf("args->file[%d]:\n", line_len);
-		block_len = 0;
-		while (args->file[line_len][block_len])
-		{
-			printf("   args->file[%d][%d] = %s\n", line_len, block_len, \
-					args->file[line_len][block_len]);
-			block_len++;
-		}
-		line_len++;
-	}
-}
+** [STATIC] Function name:
+**    store_file_in_blocks
+** Description:
+**    Read the file (byte by byte) and stores it in a variable and transform
+**    each tab '\t' in a space ' '
+**    After that, it splits the file (line by line) with ft_split (see libft)
+**    and free 'file_inline'
+**    Then it splits each line of the stored file to get just the words without
+**    any spacing, stores it in args->file and free 'file'
+** Params:
+**    int fd -> file descriptor of the file to read
+**    t_args *args -> structure with the filename (args->filename) and an
+**                    attribute (args->file) to store the file content
+**                    in 'blocks'
+** Return:
+**    ---
 */
 
 static void	store_file_in_blocks(int fd, t_args *args)
@@ -59,9 +56,28 @@ static void	store_file_in_blocks(int fd, t_args *args)
 	i = 0;
 	while (file[i++])
 		args->file[i - 1] = ft_split(file[i - 1], ' ');
-	//print_argsfile(args);
 	ft_free_split(&file);
 }
+
+/*
+** Function name:
+**    validate_rt_file
+** Description:
+**    Verify if it's possible to open and read the specified file
+**    Store content of the file in a array (each index represents a non-empty
+**    line) and in each index there is a table with the line's content splitted
+**    by the ft_split (see libft library for more information)
+**    Also sets the correspondent allocation flag
+** Params:
+**    t_args *args -> structure with the filename (args->filename) and an
+**                    attribute (args->file) to store the file content
+**                    in 'blocks'
+** Return:
+**    t_error -> report the error found
+**       [NO_ERROR] :: everything is alright
+**       [NO_FILE] :: couldn't open and/or read the file
+**       other values :: validate_objs will return the correspondent error code
+*/
 
 t_error		validate_rt_file(t_args *args)
 {
@@ -73,6 +89,7 @@ t_error		validate_rt_file(t_args *args)
 	store_file_in_blocks(fd, args);
 	allocate_flag(&(args->allocation), FILE_MASK);
 	close(fd);
+	error = NO_ERROR;
 	if ((error = validate_objs(args)))
 		return (error);
 	return (error);

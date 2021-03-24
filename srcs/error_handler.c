@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 02:29:31 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:17:46 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 **       [true] :: bit was 1
 */
 
-void	error_handler(t_error error, t_args *args)
+void	error_handler(t_error error, t_args *args, t_scene *scene)
 {
 	if (error)
 	{
@@ -38,6 +38,7 @@ void	error_handler(t_error error, t_args *args)
 		ft_putstr_fd(g_errormsgs[error], STDERR_FD);
 		ft_putstr_fd("\n", STDERR_FD);
 		free_args(args);
+		free_scene(scene);
 		exit(error);
 	}
 }

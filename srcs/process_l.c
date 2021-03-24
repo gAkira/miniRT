@@ -1,71 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_c.c                                        :+:      :+:    :+:   */
+/*   process_l.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:55:46 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:57:04 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static bool	allocate_in_scene(char ***c, t_scene *scene)
+static bool	allocate_in_scene(char ***l, t_scene *scene)
 {
 	int	i;
 
 	i = 0;
-	while (c[i])
+	while (l[i])
 		i++;
-	if (!(scene->c = (t_c*)ft_calloc(i + 1, sizeof(t_c))))
+	if (!(scene->l = (t_l*)ft_calloc(i + 1, sizeof(t_l))))
 		return (false);
-	scene->c[i].end = true;
-	allocate_flag(&(scene->allocation), C_MASK);
+	scene->l[i].end = true;
+	allocate_flag(&(scene->allocation), L_MASK);
 	return (true);
 }
 
-static void	put_in_scene(char ***c, char ***params, t_scene *scene, int i)
+static void	put_in_scene(char ***l, char ***params, t_scene *scene, int i)
 {
-	scene->c[i].coord = vec3(ft_atof(params[0][0]), \
+	scene->l[i].coord = vec3(ft_atof(params[0][0]), \
 							ft_atof(params[0][1]), \
 							ft_atof(params[0][2]));
-	scene->c[i].orient = vec3(ft_atof(params[1][0]), \
-							ft_atof(params[1][1]), \
-							ft_atof(params[1][2]));
-	scene->c[i].fov = ft_atoi(c[i][3]);
+	scene->l[i].ratio = ft_atof(l[i][2]);
+	scene->l[i].color = vec3_int(ft_atoi(params[1][0]), \
+								ft_atoi(params[1][1]), \
+								ft_atoi(params[1][2]));
 }
 
-static bool	params_in_scene(char ***c, t_scene *scene, int i)
+static bool	params_in_scene(char ***l, t_scene *scene, int i)
 {
-	char	**params[2];
+	char **params[2];
 
 	ft_bzero(&params, 2 * sizeof(char**));
-	if (!(params[0] = ft_split(c[i][1], ',')) || \
-		!(params[1] = ft_split(c[i][2], ',')))
+	if (!(params[0] = ft_split(l[i][1], ',')) || \
+		!(params[1] = ft_split(l[i][3], ',')))
 	{
 		ft_free_split(&(params[0]));
 		ft_free_split(&(params[1]));
 		return (false);
 	}
-	put_in_scene(c, params, scene, i);
+	put_in_scene(l, params, scene, i);
 	ft_free_split(&(params[0]));
 	ft_free_split(&(params[1]));
 	return (true);
 }
 
-t_error		process_c(char ***c, t_scene *scene)
+t_error		process_l(char ***l, t_scene *scene)
 {
 	int		i;
 
-	if (!c)
+	if (!l)
 		return (NO_ERROR);
-	if (!allocate_in_scene(c, scene))
+	if (!allocate_in_scene(l, scene))
 		return (NO_MEMORY);
 	i = 0;
-	while (c[i])
-		if (!params_in_scene(c, scene, i++))
+	while (l[i])
+		if (!params_in_scene(l, scene, i++))
 			return (NO_MEMORY);
 	return (NO_ERROR);
 }

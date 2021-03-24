@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 00:07:20 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 22:55:08 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,36 @@ typedef struct	s_c
 	t_vec3		orient;
 	size_t		fov;
 	t_img		*img;
+
+	bool		end;
 }				t_c;
 
 typedef struct	s_l
 {
 	t_vec3		coord;
 	double		ratio;
-}				t_l;
-
-typedef struct	s_sp
-{
-	t_vec3		coord;
-	double		diam;
 	t_vec3		color;
-}				t_sp;
+
+	bool		end;
+}				t_l;
 
 typedef struct	s_pl
 {
 	t_vec3		coord;
 	t_vec3		orient;
 	t_vec3		color;
+
+	bool		end;
 }				t_pl;
+
+typedef struct	s_sp
+{
+	t_vec3		coord;
+	double		diam;
+	t_vec3		color;
+
+	bool		end;
+}				t_sp;
 
 typedef struct	s_sq
 {
@@ -77,6 +86,8 @@ typedef struct	s_sq
 	t_vec3		orient;
 	double		side;
 	t_vec3		color;
+
+	bool		end;
 }				t_sq;
 
 typedef struct	s_cy
@@ -86,12 +97,16 @@ typedef struct	s_cy
 	double		diam;
 	double		height;
 	t_vec3		color;
+
+	bool		end;
 }				t_cy;
 
 typedef struct	s_tr
 {
 	t_vec3		coord[3];
 	t_vec3		color;
+
+	bool		end;
 }				t_tr;
 
 typedef struct	s_scene

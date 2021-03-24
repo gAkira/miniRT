@@ -6,11 +6,26 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 22:21:15 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 19:26:41 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 17:52:27 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+/*
+** [STATIC] Function name:
+**    valid_identifiers
+** Description:
+**    Verify if all lines of the file starts with a known (valid) identifier
+**    All valid identifiers at incs/arguments.h -> VALID_IDENTIFIERS
+** Params:
+**    char ***file -> each non-empty line of the file in one index (file[index])
+**                    and its content splitted by ft_split (see libft)
+** Return:
+**    bool -> report if the condition is satisfied
+**       [false] :: an invalid identifier has been found
+**       [true] :: all identifiers are valid
+*/
 
 static bool	valid_identifiers(char ***file)
 {
@@ -41,6 +56,22 @@ static bool	valid_identifiers(char ***file)
 	return (true);
 }
 
+/*
+** [STATIC] Function name:
+**    store_id
+** Description:
+**    Increment the respective list of elements (args->'list') and then makes
+**    the last element point to the correspondent line in file
+**    After that set the correct flag allocation
+** Params:
+**    char ****list -> address of the list of elements to increase
+**    char **new -> line to add at the end of the list
+**    t_args *args -> structure to allocate the respective flag
+**    size_t mask -> mask to set allocation
+** Return:
+**    ---
+*/
+
 static void	store_id(char ****list, char **new, t_args *args, size_t mask)
 {
 	int	i;
@@ -53,6 +84,18 @@ static void	store_id(char ****list, char **new, t_args *args, size_t mask)
 	(*list)[i] = new;
 	allocate_flag(&(args->allocation), mask);
 }
+
+/*
+** [STATIC] Function name:
+**    organize_identifiers
+** Description:
+**    Associate each line of the file to its respective list attribute in args
+** Params:
+**    t_args *args -> structure containing the file content and each respective
+**                    attribute of id list
+** Return:
+**    ---
+*/
 
 static void	organize_identifiers(t_args *args)
 {
@@ -82,6 +125,23 @@ static void	organize_identifiers(t_args *args)
 	}
 }
 
+/*
+** Function name:
+**    validate_objs
+** Description:
+**    Verify if all identifiers of the file are valid
+**    Organizes each identifier in its respective attribute
+**    Call validation function of each identifier
+** Params:
+**    t_args *args -> structure containing the file content and each respective
+**                    attribute of id list
+** Return:
+**    t_error -> report the error found
+**       [NO_ERROR] :: everything is alright
+**       [INVALID_IDENTIFIER] :: there's some invalid identifier in the file
+**       other values :: each function return the correspondent error value
+*/
+
 t_error		validate_objs(t_args *args)
 {
 	t_error	error;
@@ -89,23 +149,16 @@ t_error		validate_objs(t_args *args)
 	if (!valid_identifiers(args->file))
 		return (INVALID_IDENTIFIER);
 	organize_identifiers(args);
-	if ((error = validate_res(args->res)))
-		return (error);
-	if ((error = validate_amb(args->amb)))
-		return (error);
-	if ((error = validate_c(args->c)))
-		return (error);
-	if ((error = validate_l(args->l)))
-		return (error);
-	if ((error = validate_sp(args->sp)))
-		return (error);
-	if ((error = validate_pl(args->pl)))
-		return (error);
-	if ((error = validate_sq(args->sq)))
-		return (error);
-	if ((error = validate_cy(args->cy)))
-		return (error);
-	if ((error = validate_tr(args->tr)))
+	error = NO_ERROR;
+	if ((error = validate_res(args->res)) || \
+		(error = validate_amb(args->amb)) || \
+		(error = validate_c(args->c)) || \
+		(error = validate_l(args->l)) || \
+		(error = validate_sp(args->sp)) || \
+		(error = validate_pl(args->pl)) || \
+		(error = validate_sq(args->sq)) || \
+		(error = validate_cy(args->cy)) || \
+		(error = validate_tr(args->tr)))
 		return (error);
 	return (error);
 }

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 20:51:38 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/13 23:22:21 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/24 18:14:23 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static bool	valid_num_args(char **tab, int min, int max)
 	i = 0;
 	while (tab && tab[i])
 		i++;
-	return (i >= min && i <= max);
+	return (in_range(i, min, max));
 }
 
 /*
@@ -70,6 +70,7 @@ static bool	valid_num_args(char **tab, int min, int max)
 ** Description:
 **    Verifies if each argument has its correct number of parameters specified
 **    in the project
+**    Also verifies if all parameters are numbers or signs
 ** Params:
 **    char **tab -> table to test each args' amount of params
 ** Return:
@@ -88,7 +89,9 @@ static bool	valid_args_num_params(char **tab)
 	first = ft_split(tab[1], ',');
 	second = ft_split(tab[2], ',');
 	if (!valid_num_args(first, 1, 1) || \
-		!valid_num_args(second, 3, 3))
+		!valid_num_args(second, 3, 3) || \
+		!are_numerical(first) || \
+		!are_numerical(second))
 		ret = false;
 	ft_free_split(&first);
 	ft_free_split(&second);
@@ -133,11 +136,17 @@ static bool	valid_args_range(char **tab)
 ** Function name:
 **    validate_amb
 ** Description:
-**    Verify if the ambient lightning follows all specification described
-**    in the project
+**    Validate each ambient lighting (A) arguments and parameters
+**    Verify if it has none or just one definition
+**    Verify if it has the correct number of arguments
+**    Verify if each argument has its correct number of parameters
+**    Verify if each parameter is in the correct range
 ** Params:
-**    char ***amb -> each element of the array is a table/matrix made
-**                   with the libft's function ft_split
+**    char ***amb -> array of tables (made with ft_split - more info in libft)
+**                   each index of the first array (amb[index1]) is a line
+**                   (i.e. a different ambient lighting) of the file. At the
+**                   second index (amb[index1][index2]) is a word (string) of
+**                   the respective line
 ** Return:
 **    t_error -> report the error found
 **       [NO_ERROR] :: everything is alright
