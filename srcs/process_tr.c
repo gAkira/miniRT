@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:58:07 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 21:28:25 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,31 @@ static bool	allocate_in_scene(char ***tr, t_scene *scene)
 	i = 0;
 	while (tr[i])
 		i++;
-	if (!(scene->tr = (t_tr*)ft_calloc(i + 1, sizeof(t_tr))))
+	if (!(scene->tr = (t_tr**)ft_calloc(i + 1, sizeof(t_tr*))))
 		return (false);
-	scene->tr[i].end = true;
-	allocate_flag(&(scene->allocation), TR_MASK);	
+	allocate_flag(&(scene->allocation), TR_MASK);
+	i = 0;
+	while (tr[i])
+		if (!(scene->tr[i++] = (t_tr*)ft_calloc(1, sizeof(t_tr))))
+			return (false);
 	return (true);
 }
 
 static void	put_in_scene(char ***tr, char ***params, t_scene *scene, int i)
 {
 	(void)tr;
-	scene->tr[i].coord[0] = vec3(ft_atof(params[0][0]), \
-								ft_atof(params[0][1]), \
-								ft_atof(params[0][2]));
-	scene->tr[i].coord[1] = vec3(ft_atof(params[1][0]), \
-								ft_atof(params[1][1]), \
-								ft_atof(params[1][2]));
-	scene->tr[i].coord[2] = vec3(ft_atof(params[2][0]), \
-								ft_atof(params[2][1]), \
-								ft_atof(params[2][2]));
-	scene->tr[i].color = vec3_int(ft_atoi(params[3][0]), \
-								ft_atoi(params[3][1]), \
-								ft_atoi(params[3][2]));
+	scene->tr[i]->coord[0] = mx_point(ft_atof(params[0][0]), \
+									ft_atof(params[0][1]), \
+									ft_atof(params[0][2]));
+	scene->tr[i]->coord[1] = mx_point(ft_atof(params[1][0]), \
+									ft_atof(params[1][1]), \
+									ft_atof(params[1][2]));
+	scene->tr[i]->coord[2] = mx_point(ft_atof(params[2][0]), \
+									ft_atof(params[2][1]), \
+									ft_atof(params[2][2]));
+	scene->tr[i]->color = mx_vector(ft_atoi(params[3][0]), \
+									ft_atoi(params[3][1]), \
+									ft_atoi(params[3][2]));
 }
 
 static bool	params_in_scene(char ***tr, t_scene *scene, int i)

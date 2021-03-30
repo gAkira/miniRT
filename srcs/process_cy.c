@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:56:51 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:09:41 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,27 @@ static bool	allocate_in_scene(char ***cy, t_scene *scene)
 	i = 0;
 	while (cy[i])
 		i++;
-	if (!(scene->cy = (t_cy*)ft_calloc(i + 1, sizeof(t_cy))))
+	if (!(scene->cy = (t_cy**)ft_calloc(i + 1, sizeof(t_cy*))))
 		return (false);
-	scene->cy[i].end = true;	
 	allocate_flag(&(scene->allocation), CY_MASK);
+	i = 0;
+	while (cy[i])
+		if (!(scene->cy[i++] = (t_cy*)ft_calloc(1, sizeof(t_cy))))
+			return (false);
 	return (true);
 }
 
 static void	put_in_scene(char ***cy, char ***params, t_scene *scene, int i)
 {
-	scene->cy[i].coord = vec3(ft_atof(params[0][0]), \
-							ft_atof(params[0][1]), \
-							ft_atof(params[0][2]));
-	scene->cy[i].orient = vec3(ft_atof(params[1][0]), \
-							ft_atof(params[1][1]), \
-							ft_atof(params[1][2]));
-	scene->cy[i].diam = ft_atof(cy[i][3]);
-	scene->cy[i].height = ft_atof(cy[i][4]);
-	scene->cy[i].color = vec3_int(ft_atoi(params[2][0]), \
+	scene->cy[i]->coord = mx_point(ft_atof(params[0][0]), \
+								ft_atof(params[0][1]), \
+								ft_atof(params[0][2]));
+	scene->cy[i]->dir = mx_vector(ft_atof(params[1][0]), \
+								ft_atof(params[1][1]), \
+								ft_atof(params[1][2]));
+	scene->cy[i]->diam = ft_atof(cy[i][3]);
+	scene->cy[i]->height = ft_atof(cy[i][4]);
+	scene->cy[i]->color = mx_vector(ft_atoi(params[2][0]), \
 								ft_atoi(params[2][1]), \
 								ft_atoi(params[2][2]));
 }

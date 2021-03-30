@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:19:04 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 18:41:49 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "mlx.h"
-# include "vec3.h"
+# include "mathx.h"
 # include "libft.h"
 # include "error_codes.h"
 # include "arguments.h"

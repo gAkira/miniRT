@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:55:46 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:02:33 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,25 @@ static bool	allocate_in_scene(char ***c, t_scene *scene)
 	i = 0;
 	while (c[i])
 		i++;
-	if (!(scene->c = (t_c*)ft_calloc(i + 1, sizeof(t_c))))
+	if (!(scene->c = (t_c**)ft_calloc(i + 1, sizeof(t_c*))))
 		return (false);
-	scene->c[i].end = true;
 	allocate_flag(&(scene->allocation), C_MASK);
+	i = 0;
+	while (c[i])
+		if (!(scene->c[i++] = (t_c*)ft_calloc(1, sizeof(t_c))))
+			return (false);
 	return (true);
 }
 
 static void	put_in_scene(char ***c, char ***params, t_scene *scene, int i)
 {
-	scene->c[i].coord = vec3(ft_atof(params[0][0]), \
-							ft_atof(params[0][1]), \
-							ft_atof(params[0][2]));
-	scene->c[i].orient = vec3(ft_atof(params[1][0]), \
-							ft_atof(params[1][1]), \
-							ft_atof(params[1][2]));
-	scene->c[i].fov = ft_atoi(c[i][3]);
+	scene->c[i]->coord = mx_point(ft_atof(params[0][0]), \
+								ft_atof(params[0][1]), \
+								ft_atof(params[0][2]));
+	scene->c[i]->dir = mx_vector(ft_atof(params[1][0]), \
+								ft_atof(params[1][1]), \
+								ft_atof(params[1][2]));
+	scene->c[i]->fov = ft_atoi(c[i][3]);
 }
 
 static bool	params_in_scene(char ***c, t_scene *scene, int i)

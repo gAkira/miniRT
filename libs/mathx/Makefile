@@ -6,7 +6,7 @@
 #    By: galves-d <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/19 04:50:18 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/30 16:42:19 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/30 21:13:38 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,12 @@ SRCS_FILES	=	mx_tuple.c		\
 
 SRCS_DIR	=	./srcs
 OBJS_DIR	=	./objs
-INC_DIR		=	./incs
+INCS_DIR	=	./incs
 
 CC			=	gcc
 CC_FLAGS	=	-Wall -Wextra -Werror
 
-INCS		=	-I$(INC_DIR)
+INCS		=	-I$(INCS_DIR)
 LIBS		=	-lm
 
 SRCS		=	$(patsubst %.c, $(SRCS_DIR)/%.c, $(SRCS_FILES))

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:57:20 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 20:53:59 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,26 @@ static bool	allocate_in_scene(char ***pl, t_scene *scene)
 	i = 0;
 	while (pl[i])
 		i++;
-	if (!(scene->pl = (t_pl*)ft_calloc(i + 1, sizeof(t_pl))))
+	if (!(scene->pl = (t_pl**)ft_calloc(i + 1, sizeof(t_pl*))))
 		return (false);
-	scene->pl[i].end = true;
 	allocate_flag(&(scene->allocation), PL_MASK);
+	i = 0;
+	while (pl[i])
+		if (!(scene->pl[i++] = (t_pl*)ft_calloc(1, sizeof(t_pl))))
+			return (false);
 	return (true);
 }
 
 static void	put_in_scene(char ***pl, char ***params, t_scene *scene, int i)
 {
 	(void)pl;
-	scene->pl[i].coord = vec3(ft_atof(params[0][0]), \
+	scene->pl[i]->coord = mx_point(ft_atof(params[0][0]), \
 								ft_atof(params[0][1]), \
 								ft_atof(params[0][2]));
-	scene->pl[i].orient = vec3(ft_atof(params[1][0]), \
+	scene->pl[i]->dir = mx_vector(ft_atof(params[1][0]), \
 								ft_atof(params[1][1]), \
 								ft_atof(params[1][2]));
-	scene->pl[i].color = vec3_int(ft_atoi(params[2][0]), \
+	scene->pl[i]->color = mx_vector(ft_atoi(params[2][0]), \
 								ft_atoi(params[2][1]), \
 								ft_atoi(params[2][2]));
 }
