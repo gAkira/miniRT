@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 00:21:14 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 04:43:42 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:16:59 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ t_matrix	mx_zrotate(double rad);
 t_matrix	mx_xrotated(double deg);
 t_matrix	mx_yrotated(double deg);
 t_matrix	mx_zrotated(double deg);
+t_matrix	mx_skew(t_tuple x, t_tuple y, t_tuple z);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: galves-d <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/19 04:50:18 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/30 04:42:39 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/30 16:42:19 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS_FILES	=	mx_tuple.c		\
 				mx_scale.c		\
 				mx_rotate.c		\
 				mx_rotated.c	\
+				mx_skew.c
 
 SRCS_DIR	=	./srcs
 OBJS_DIR	=	./objs
