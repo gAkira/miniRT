@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/24 22:17:46 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 03:02:48 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ void	error_handler(t_error error, t_args *args, t_scene *scene)
 		ft_putstr_fd(g_errormsgs[error], STDERR_FD);
 		ft_putstr_fd("\n", STDERR_FD);
 		free_args(args);
-		free_scene(scene);
+		if (is_allocated_flag(args->allocation, SCENE_MASK))
+		{
+			free_scene(scene);
+			deallocate_flag(&(args->allocation), SCENE_MASK);
+		}
 		exit(error);
 	}
 }

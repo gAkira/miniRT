@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:48:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 21:32:30 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 00:23:17 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 **    main
 ** Description:
 **    Main function of the program
-**    It must receive the path to a file (filename.pos[0]t) describing a scene and a
+**    It must receive the path to a file (filename.rt) describing a scene and a
 **    possible saving flag (--save)
 **    Then it outputs the scene described in a window (or save it in bitmap
-**    .pos[2]mp, depending on the flag)
+**    .bmp, depending on the flag)
 ** Params:
 **    int argc -> number of arguments passed
 **    char **argv -> table content with the parameters passed (array of strings)

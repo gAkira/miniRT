@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/30 21:59:23 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/31 00:36:28 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS_FILES	=	main.c				\
 				process_sp.c		\
 				process_sq.c		\
 				process_cy.c		\
-				process_tr.c
+				process_tr.c		\
+				canvas.c
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs

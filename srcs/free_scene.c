@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 22:09:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 21:57:40 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 02:47:16 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,20 @@ static void	free_dealloc(void *addr, size_t size, size_t *alloc, t_mask mask)
 	deallocate_flag(alloc, mask);
 }
 
+static void	free_dealloc_cam(t_c **c, size_t *alloc)
+{
+	size_t	i;
+
+	i = 0;
+	while (c && c[i])
+		free_canvas(c[i++]->canvas);
+	free_dealloc(c, sizeof(t_c*), alloc, C_MASK);
+}
+
 void		free_scene(t_scene *scene)
 {
 	if (is_allocated_flag(scene->allocation, C_MASK))
-		free_dealloc(scene->c, sizeof(t_c*), &(scene->allocation), C_MASK);
+		free_dealloc_cam(scene->c, &(scene->allocation));
 	if (is_allocated_flag(scene->allocation, L_MASK))
 		free_dealloc(scene->l, sizeof(t_l*), &(scene->allocation), L_MASK);
 	if (is_allocated_flag(scene->allocation, PL_MASK))

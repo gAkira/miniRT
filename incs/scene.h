@@ -6,12 +6,14 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 18:35:09 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 02:34:53 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
+
+# include "canvas.h"
 
 /*
 ** Image information
@@ -49,6 +51,7 @@ typedef struct	s_c
 	t_tuple		dir;
 	size_t		fov;
 	t_img		*img;
+	t_canvas	*canvas;
 }				t_c;
 
 typedef struct	s_l
