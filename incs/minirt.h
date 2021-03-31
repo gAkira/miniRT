@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 02:44:20 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 03:28:52 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ bool		are_numerical(char **tab);
 void		allocate_flag(size_t *alloc, size_t mask);
 void		deallocate_flag(size_t *alloc, size_t maks);
 bool		is_allocated_flag(size_t alloc, size_t mask);
+t_tuple		hadamard(t_tuple color1, t_tuple color2);
 
 /*
 ** Validation
