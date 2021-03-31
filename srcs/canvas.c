@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 00:26:51 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 03:13:05 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 03:40:38 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,23 @@ void		write_canvas(t_canvas *canvas, size_t x, size_t y, int color)
 	if (!canvas->pos)
 		return ;
 	canvas->pos[canvas->y - y][x] = color;
+}
+
+/*
+** Function name:
+**    read_canvas
+** Description:
+**    Returns the color at the canvas in position (x,y)
+** Params:
+**    t_canvas *canvas -> canvas to read
+**    size_t x -> x position to write
+**    size_t y -> y position to write
+** Return:
+**    int -> pixel value
+**       value :: (alpha << 24 | r << 16 | g << 8 | b << 0)
+*/
+
+int			read_canvas(t_canvas *canvas, size_t x, size_t y)
+{
+	return (canvas->pos[y][x]);
 }
