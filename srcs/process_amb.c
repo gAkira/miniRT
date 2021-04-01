@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 22:25:42 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 20:57:54 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ t_error	process_amb(char ***amb, t_scene *scene)
 		if (!(params = ft_split(amb[0][2], ',')))
 			return (NO_MEMORY);
 		scene->amb.ratio = ft_atof(amb[0][1]);
-		scene->amb.color = mx_vector(ft_atoi(params[0]), \
-									ft_atoi(params[1]), \
-									ft_atoi(params[2]));
+		scene->amb.color = mx_vector(ft_atof(params[0]) / 255.0, \
+									ft_atof(params[1]) / 255.0, \
+									ft_atof(params[2]) / 255.0);
 		ft_free_split(&params);
 	}
 	return (NO_ERROR);

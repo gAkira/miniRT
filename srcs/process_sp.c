@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 03:24:40 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 21:01:26 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ static void	put_in_scene(char ***sp, char ***params, t_scene *scene, int i)
 								ft_atof(params[0][1]), \
 								ft_atof(params[0][2]));
 	scene->sp[i]->diam = ft_atof(sp[i][2]);
-	scene->sp[i]->color = mx_vector(ft_atoi(params[1][0]), \
-								ft_atoi(params[1][1]), \
-								ft_atoi(params[1][2]));
-	scene->sp[i]->transform = mx_identity(4);
+	scene->sp[i]->color = mx_vector(ft_atof(params[1][0]) / 255.0, \
+								ft_atof(params[1][1]) / 255.0, \
+								ft_atof(params[1][2]) / 255.0);
 }
 
 /*
@@ -94,6 +93,7 @@ static void	set_transform(t_sp *sp)
 							sp->diam / 2, \
 							sp->diam / 2, \
 							sp->diam / 2));
+	sp->inv_transform = mx_inv(sp->transform);
 }
 
 /*

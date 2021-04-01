@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   mask.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/31 00:41:59 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 16:59:45 by galves-d         ###   ########.fr       */
+/*   Created: 2021/04/01 16:26:33 by galves-d          #+#    #+#             */
+/*   Updated: 2021/04/01 16:27:24 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef MASK_H
+# define MASK_H
 
-# include "mask.h"
-
-typedef struct	s_canvas
+typedef enum	e_mask
 {
-	size_t		x;
-	size_t		y;
-	int			**pos;
-}				t_canvas;
-
-typedef struct	s_ray
-{
-	t_tuple		coord;
-	t_tuple		dir;
-}				t_ray;
-
-typedef struct	s_intersect
-{
-	t_mask		mask;
-
-	void		*obj;
-	double		t;
-}				t_intersect;
+        FILENAME_MASK,
+        FILE_MASK,
+        RES_MASK,
+        AMB_MASK,
+        C_MASK,
+        L_MASK,
+        PL_MASK,
+        SP_MASK,
+        SQ_MASK,
+        CY_MASK,
+        TR_MASK,
+        SCENE_MASK,
+		MLX_MASK
+}				t_mask;
 
 #endif

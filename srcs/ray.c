@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 15:52:25 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 16:06:49 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:13:29 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,17 @@ t_ray	ray(t_tuple origin, t_tuple direction)
 	return (ray);
 }
 
-t_tuple	ray_pos(t_ray ray, double t)
+t_tuple	ray_pos(t_ray r, double t)
 {
-	return (mx_sum(ray.coord, mx_prod(ray.dir, t)));
+	return (mx_sum(r.coord, mx_prod(r.dir, t)));
+}
+
+t_ray	ray_transform(t_matrix m, t_ray r)
+{
+	t_tuple	origin;
+	t_tuple	direction;
+
+	origin = mx_transform(m, r.coord);
+	direction = mx_transform(m, r.dir);
+	return (ray(origin, direction));
 }

@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   reflect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/31 00:41:59 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 16:59:45 by galves-d         ###   ########.fr       */
+/*   Created: 2021/04/01 20:10:21 by galves-d          #+#    #+#             */
+/*   Updated: 2021/04/01 20:12:56 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "minirt.h"
 
-# include "mask.h"
-
-typedef struct	s_canvas
+t_tuple	reflect(t_tuple in, t_tuple normal)
 {
-	size_t		x;
-	size_t		y;
-	int			**pos;
-}				t_canvas;
-
-typedef struct	s_ray
-{
-	t_tuple		coord;
-	t_tuple		dir;
-}				t_ray;
-
-typedef struct	s_intersect
-{
-	t_mask		mask;
-
-	void		*obj;
-	double		t;
-}				t_intersect;
-
-#endif
+	return (mx_sub(in, mx_prod(normal, 2.0 * mx_dot(in, normal))));
+}

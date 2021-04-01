@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 21:50:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 20:10:04 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,9 @@
 # include "libft.h"
 # include "error_codes.h"
 # include "arguments.h"
+# include "mask.h"
 # include "scene.h"
 # include "render.h"
-
-typedef enum	e_mask
-{
-	FILENAME_MASK,
-	FILE_MASK,
-	RES_MASK,
-	AMB_MASK,
-	C_MASK,
-	L_MASK,
-	PL_MASK,
-	SP_MASK,
-	SQ_MASK,
-	CY_MASK,
-	TR_MASK,
-	SCENE_MASK
-}				t_mask;
 
 /*
 ** Auxiliary functions
@@ -101,8 +86,20 @@ void		write_canvas(t_canvas *canvas, size_t x, size_t y, int color);
 ** Ray functions
 */
 
-t_ray	ray(t_tuple origin, t_tuple direction);
-t_tuple	ray_pos(t_ray ray, double t);
+t_ray		ray(t_tuple origin, t_tuple direction);
+t_tuple		ray_pos(t_ray r, double t);
+t_ray		ray_transform(t_matrix m, t_ray r);
+
+/*
+** Intersection functions
+*/
+
+t_intersect	*intersection(void *obj, double t, t_mask mask);
+void		intersections(t_intersect ***list, t_intersect *intersect);
+t_intersect	*hit(t_intersect **list);
+void		intersect_sp(t_intersect ***list, t_sp *sp, t_ray ray);
+t_tuple		reflect(t_tuple in, t_tuple normal);
+t_tuple		normal_sp(t_sp *sp, t_tuple world_point);
 
 /*
 ** Free memory

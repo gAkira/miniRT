@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 00:15:49 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:42:44 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct	s_sp
 	double		diam;
 	t_tuple		color;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }				t_sp;
 
 typedef struct	s_sq

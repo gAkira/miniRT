@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 22:48:43 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 20:59:16 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static void	put_in_scene(char ***cy, char ***params, t_scene *scene, int i)
 								ft_atof(params[1][2]));
 	scene->cy[i]->diam = ft_atof(cy[i][3]);
 	scene->cy[i]->height = ft_atof(cy[i][4]);
-	scene->cy[i]->color = mx_vector(ft_atoi(params[2][0]), \
-								ft_atoi(params[2][1]), \
-								ft_atoi(params[2][2]));
+	scene->cy[i]->color = mx_vector(ft_atof(params[2][0]) / 255.0, \
+								ft_atof(params[2][1]) / 255.0, \
+								ft_atof(params[2][2]) / 255.0);
 }
 
 /*

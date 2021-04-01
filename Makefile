@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/31 21:50:44 by galves-d         ###   ########.fr        #
+#    Updated: 2021/04/01 20:10:14 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,10 @@ SRCS_FILES	=	main.c				\
 				process_tr.c		\
 				canvas.c			\
 				ray.c				\
+				intersection.c		\
+				intersect_sp.c		\
+				normal_sp.c			\
+				reflect.c			\
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs
