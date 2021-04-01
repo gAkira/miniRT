@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/03/31 03:29:10 by galves-d         ###   ########.fr        #
+#    Updated: 2021/03/31 21:50:44 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS_FILES	=	main.c				\
 				validate_sq.c		\
 				validate_cy.c		\
 				validate_tr.c		\
-				process_objs.c		\
+				process_scene.c		\
 				process_res.c		\
 				process_amb.c		\
 				process_c.c			\
@@ -44,7 +44,8 @@ SRCS_FILES	=	main.c				\
 				process_sq.c		\
 				process_cy.c		\
 				process_tr.c		\
-				canvas.c
+				canvas.c			\
+				ray.c				\
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs

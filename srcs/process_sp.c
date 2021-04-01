@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 23:15:23 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 03:24:40 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,31 @@ static void	put_in_scene(char ***sp, char ***params, t_scene *scene, int i)
 	scene->sp[i]->color = mx_vector(ft_atoi(params[1][0]), \
 								ft_atoi(params[1][1]), \
 								ft_atoi(params[1][2]));
+	scene->sp[i]->transform = mx_identity(4);
+}
+
+/*
+** [STATIC] Function name:
+**    set_transform
+** Description:
+**    Set the transform matrix accordingly
+** Params:
+**    t_sp *sp -> object in which put the respective transformation
+** Return:
+**    ---
+*/
+
+static void	set_transform(t_sp *sp)
+{
+	sp->transform = mx_multiply(\
+						mx_translate(\
+							sp->coord.pos[0], \
+							sp->coord.pos[1], \
+							sp->coord.pos[2]), \
+						mx_scale(\
+							sp->diam / 2, \
+							sp->diam / 2, \
+							sp->diam / 2));
 }
 
 /*
@@ -102,6 +127,7 @@ static bool	params_in_scene(char ***sp, t_scene *scene, int i)
 		return (false);
 	}
 	put_in_scene(sp, params, scene, i);
+	set_transform(scene->sp[i]);
 	ft_free_split(&(params[0]));
 	ft_free_split(&(params[1]));
 	return (true);

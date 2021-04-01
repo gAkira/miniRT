@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 03:28:52 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 21:50:37 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "error_codes.h"
 # include "arguments.h"
 # include "scene.h"
-# include "canvas.h"
+# include "render.h"
 
 typedef enum	e_mask
 {
@@ -78,7 +78,7 @@ t_error		validate_tr(char ***tr);
 ** Process objects in scene file
 */
 
-t_error		process_objs(t_args *args, t_scene *scene);
+t_error		process_scene(t_args *args, t_scene *scene);
 t_error		process_res(char ***res, t_scene *scene);
 t_error		process_amb(char ***amb, t_scene *scene);
 t_error		process_c(char ***c, t_scene *scene);
@@ -96,6 +96,13 @@ t_error		process_tr(char ***tr, t_scene *scene);
 t_canvas	*create_canvas(size_t x, size_t y);
 void		free_canvas(t_canvas *canvas);
 void		write_canvas(t_canvas *canvas, size_t x, size_t y, int color);
+
+/*
+** Ray functions
+*/
+
+t_ray	ray(t_tuple origin, t_tuple direction);
+t_tuple	ray_pos(t_ray ray, double t);
 
 /*
 ** Free memory

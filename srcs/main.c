@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:48:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 00:23:17 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/03/31 23:50:54 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,26 @@ int	main(int argc, char **argv)
 {
 	t_args	args;
 	t_scene	scene;
+	//t_mlx	mlx;
 
 	error_handler(validate_args(argc, argv, &args), &args, &scene);
 	error_handler(validate_rt_file(&args), &args, &scene);
-	error_handler(process_objs(&args, &scene), &args, &scene);
-	//printf("filename: %s\nsave: %d\n", args.filename, (int)args.save);
+	error_handler(process_scene(&args, &scene), &args, &scene);
 	print_scene(scene);
 	free_args(&args);
+	/*
+	if (!args.save)
+	{
+		error_handler(setup_mlx(&mlx), &args, &scene);
+		error_handler(pre_render_mlx(&mlx, &scene), &args, &scene);
+		error_handler();
+	}
+	else
+	{
+		error_handler(pre_render(&scene), &args, &scene);
+		error_handler();
+	}
+	*/
 	free_scene(&scene);
 	return (0);
 }

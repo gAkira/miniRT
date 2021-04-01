@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_objs.c                                     :+:      :+:    :+:   */
+/*   process_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 21:25:38 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 02:48:25 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 00:19:16 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,36 @@
 #include <stdio.h>
 
 /*
+** [STATIC] Function name:
+**    copy_filename
+** Description:
+**    Copy filename of the scene file (without '.rt') in args to scene struct
+**    Set its flag
+** Params:
+**    t_args *args -> reference to a struct containing the name of the scene
+**                    file
+**    t_scene *scene -> reference to a scene instance to store the name without
+**                      .rt extension
+** Return:
+**    ---
+*/
+
+static void	copy_filename(t_args *args, t_scene *scene)
+{
+	size_t	len;
+
+	len = ft_strlen(args->filename);
+	scene->filename = (char*)ft_calloc(len - 2, sizeof(char));
+	if (scene->filename)
+	{
+		ft_memmove(scene->filename, args->filename, (len - 3) * sizeof(char));
+		allocate_flag(&(scene->allocation), FILENAME_MASK);
+	}
+}
+
+/*
 ** Function name:
-**    process_objs
+**    process_scene
 ** Description:
 **    Process each type of object and if some error occurr, returns it
 ** Params:
@@ -30,13 +58,15 @@
 **       other values :: each function will return its correspondent error code
 */
 
-t_error		process_objs(t_args *args, t_scene *scene)
+t_error		process_scene(t_args *args, t_scene *scene)
 {
 	t_error error;
 
 	error = NO_ERROR;
 	ft_bzero(scene, sizeof(t_scene));
 	allocate_flag(&(args->allocation), SCENE_MASK);
+	if (args->save)
+		copy_filename(args, scene);
 	if ((error = process_res(args->res, scene)) || \
 		(error = process_amb(args->amb, scene)) || \
 		(error = process_c(args->c, scene)) || \
