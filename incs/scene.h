@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 19:42:44 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/01 21:36:58 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ typedef struct	s_img
 	int			line_len;
 	int			endian;
 }				t_img;
+
+typedef struct	s_material
+{
+	t_tuple		color;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}				t_material;
 
 /*
 ** For a better look about the attributes of these structures, see the
@@ -65,15 +74,16 @@ typedef struct	s_pl
 {
 	t_tuple		coord;
 	t_tuple		dir;
-	t_tuple		color;
+	t_material	mat;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }				t_pl;
 
 typedef struct	s_sp
 {
 	t_tuple		coord;
 	double		diam;
-	t_tuple		color;
+	t_material	mat;
 	t_matrix	transform;
 	t_matrix	inv_transform;
 }				t_sp;
@@ -83,8 +93,9 @@ typedef struct	s_sq
 	t_tuple		coord;
 	t_tuple		dir;
 	double		side;
-	t_tuple		color;
+	t_material	mat;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }				t_sq;
 
 typedef struct	s_cy
@@ -93,15 +104,17 @@ typedef struct	s_cy
 	t_tuple		dir;
 	double		diam;
 	double		height;
-	t_tuple		color;
+	t_material	mat;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }				t_cy;
 
 typedef struct	s_tr
 {
 	t_tuple		coord[3];
-	t_tuple		color;
+	t_material	mat;
 	t_matrix	transform;
+	t_matrix	inv_transform;
 }				t_tr;
 
 typedef struct	s_scene
