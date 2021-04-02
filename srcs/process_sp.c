@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 21:39:08 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:28:13 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,10 @@ static void	put_in_scene(char ***sp, char ***params, t_scene *scene, int i)
 								ft_atof(params[0][1]), \
 								ft_atof(params[0][2]));
 	scene->sp[i]->diam = ft_atof(sp[i][2]);
+	scene->sp[i]->mat = material();
 	scene->sp[i]->mat.color = mx_vector(ft_atof(params[1][0]) / 255.0, \
 								ft_atof(params[1][1]) / 255.0, \
 								ft_atof(params[1][2]) / 255.0);
-	scene->sp[i]->mat.ambient = 0.1;
-	scene->sp[i]->mat.diffuse = 0.9;
-	scene->sp[i]->mat.specular = 0.9;
-	scene->sp[i]->mat.shininess = 200.0;
 }
 
 /*

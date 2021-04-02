@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:19:54 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 19:42:07 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:05:34 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,17 @@ void	intersect_sp(t_intersect ***list, t_sp *sp, t_ray ray)
 		t[1] = (-abc[1] + sqrt(discriminant)) / (2.0 * abc[0]);
 		intersections(list, intersection(sp, t[0], SP_MASK));
 		intersections(list, intersection(sp, t[1], SP_MASK));
+	}
+}
+
+void	get_intersects_sp(t_intersect ***list, t_sp **sp, t_ray ray)
+{
+	int	i;
+
+	i = 0;
+	while (sp && sp[i])
+	{
+		intersect_sp(list, sp[i], ray);
+		i++;
 	}
 }
