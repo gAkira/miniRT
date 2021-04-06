@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 21:36:58 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 21:53:41 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,7 @@
 # define SCENE_H
 
 # include "render.h"
-
-/*
-** Image information
-*/
-
-typedef struct	s_img
-{
-	void		*id;
-	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
-}				t_img;
+# include "mlx_server.h"
 
 typedef struct	s_material
 {
@@ -59,6 +47,11 @@ typedef struct	s_c
 	t_tuple		coord;
 	t_tuple		dir;
 	size_t		fov;
+
+	double		half_width;
+	double		half_height;
+	double		pixel_size;
+
 	t_img		*img;
 	t_canvas	*canvas;
 }				t_c;
@@ -132,6 +125,8 @@ typedef struct	s_scene
 	t_sq		**sq;
 	t_cy		**cy;
 	t_tr		**tr;
+
+	t_args		*args;
 }				t_scene;
 
 #endif

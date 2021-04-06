@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 23:36:49 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 19:08:04 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "mlx.h"
+# include "mlx_server.h"
 # include "mathx.h"
 # include "libft.h"
 # include "error_codes.h"
@@ -128,5 +129,12 @@ void		free_scene(t_scene *scene);
 */
 
 void		error_handler(t_error error, t_args *args, t_scene *scene);
+
+/*
+** Mlx config
+*/
+
+t_error		setup_mlx(t_scene *scene, t_mlx *server);
+int			close_mlx(t_mlx *server);
 
 #endif

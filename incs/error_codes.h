@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 02:04:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/23 22:41:38 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 23:02:29 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ typedef enum	e_error
 	WRONG_ARGS_RANGE_TR,
 
 	NO_MEMORY,
-
+	CANT_SETUP_MLX,
+	
+	EXIT_0,
 	__MAX_ERROR
 }				t_error;
 

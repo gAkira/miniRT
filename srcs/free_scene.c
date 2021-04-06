@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 22:09:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 02:47:16 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 23:51:08 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	free_dealloc(void *addr, size_t size, size_t *alloc, t_mask mask)
 	size_t	i;
 
 	i = 0;
-	while (!is_null(addr + i, size))
+	while (mask != FILENAME_MASK && !is_null(addr + i, size))
 	{
 		free(*((void**)(addr + i)));
 		i += size;
@@ -52,6 +52,9 @@ static void	free_dealloc_cam(t_c **c, size_t *alloc)
 
 void		free_scene(t_scene *scene)
 {
+	if (is_allocated_flag(scene->allocation, FILENAME_MASK))
+		free_dealloc(scene->filename, sizeof(char*), \
+						&(scene->allocation), FILENAME_MASK);
 	if (is_allocated_flag(scene->allocation, C_MASK))
 		free_dealloc_cam(scene->c, &(scene->allocation));
 	if (is_allocated_flag(scene->allocation, L_MASK))

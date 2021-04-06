@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 21:25:38 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 00:19:16 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 17:31:28 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_error		process_scene(t_args *args, t_scene *scene)
 	error = NO_ERROR;
 	ft_bzero(scene, sizeof(t_scene));
 	allocate_flag(&(args->allocation), SCENE_MASK);
+	scene->args = args;
 	if (args->save)
 		copy_filename(args, scene);
 	if ((error = process_res(args->res, scene)) || \

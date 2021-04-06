@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:53:48 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 03:02:48 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/06 18:24:54 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	error_handler(t_error error, t_args *args, t_scene *scene)
 			free_scene(scene);
 			deallocate_flag(&(args->allocation), SCENE_MASK);
 		}
+		if (error == EXIT_0)
+			exit(0);
 		exit(error);
 	}
 }
