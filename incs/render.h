@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 00:41:59 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/02 17:07:53 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/05 17:22:15 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ typedef struct	s_intersect
 	double		t;
 }				t_intersect;
 
-typedef struct	s_lightvec
+typedef struct	s_comps
 {
+	t_mask		mask;
+	void		*obj;
+	double		t;
+
 	t_tuple		point;
 	t_tuple		eye;
 	t_tuple		light;
 	t_tuple		normal;
 	t_tuple		reflect;
-}				t_lightvec;
+	double		inside;
+}				t_comps;
 
 #endif

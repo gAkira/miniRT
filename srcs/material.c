@@ -6,13 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 20:22:11 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/02 20:26:20 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/05 17:10:52 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_material	material()
+t_material	material(void)
 {
 	t_material material;
 

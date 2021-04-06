@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/04/02 20:22:04 by galves-d         ###   ########.fr        #
+#    Updated: 2021/04/05 23:46:38 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,16 @@ SRCS_FILES	=	main.c				\
 				canvas.c			\
 				ray.c				\
 				intersection.c		\
+				intersect_scene.c	\
 				intersect_sp.c		\
+				normal_at.c			\
 				normal_sp.c			\
 				reflect.c			\
 				material.c			\
 				lighting.c			\
+				prepare_comps.c		\
+				shade_hit.c			\
+				color_at.c			\
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs

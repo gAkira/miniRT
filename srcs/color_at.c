@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect_scene.c                                  :+:      :+:    :+:   */
+/*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 20:56:50 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 20:39:48 by galves-d         ###   ########.fr       */
+/*   Created: 2021/04/05 20:34:59 by galves-d          #+#    #+#             */
+/*   Updated: 2021/04/05 20:51:24 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersect **intersect_scene(t_scene *scene, t_ray ray)
+t_tuple	color_at(t_scene *scene, t_ray ray)
 {
 	t_intersect	**intersections;
+	t_intersect	*hit_obj;
+	t_comps		comps;
+	t_tuple		color;
 
-	intersections = NULL;
-	get_intersects_sp(&intersections, scene->sp, ray);
-	/*
-	get_intersects_pl(&intersections, scene->pl, ray);
-	get_intersects_sq(&intersections, scene->sq, ray);
-	get_intersects_cy(&intersections, scene->cy, ray);
-	get_intersects_tr(&intersections, scene->tr, ray);
-	*/
-	return (intersections);
+	intersections = intersect_scene(scene, ray);
+	hit_obj = hit(intersections);
+	if (!hit_obj)
+		color = mx_vector(0, 0, 0);
+	else
+	{
+		comps = prepare_comps(hit_obj, ray);
+		color = shade_hit(scene, comps);
+	}
+	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 20:10:04 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/05 23:36:49 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void		allocate_flag(size_t *alloc, size_t mask);
 void		deallocate_flag(size_t *alloc, size_t maks);
 bool		is_allocated_flag(size_t alloc, size_t mask);
 t_tuple		hadamard(t_tuple color1, t_tuple color2);
+t_material	material(void);
 
 /*
 ** Validation
@@ -81,6 +82,7 @@ t_error		process_tr(char ***tr, t_scene *scene);
 t_canvas	*create_canvas(size_t x, size_t y);
 void		free_canvas(t_canvas *canvas);
 void		write_canvas(t_canvas *canvas, size_t x, size_t y, int color);
+t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
 
 /*
 ** Ray functions
@@ -89,6 +91,7 @@ void		write_canvas(t_canvas *canvas, size_t x, size_t y, int color);
 t_ray		ray(t_tuple origin, t_tuple direction);
 t_tuple		ray_pos(t_ray r, double t);
 t_ray		ray_transform(t_matrix m, t_ray r);
+t_tuple		reflect(t_tuple in, t_tuple normal);
 
 /*
 ** Intersection functions
@@ -97,9 +100,21 @@ t_ray		ray_transform(t_matrix m, t_ray r);
 t_intersect	*intersection(void *obj, double t, t_mask mask);
 void		intersections(t_intersect ***list, t_intersect *intersect);
 t_intersect	*hit(t_intersect **list);
+void		free_intersections(t_intersect **list);
+t_intersect	**intersect_scene(t_scene *scene, t_ray ray);
 void		intersect_sp(t_intersect ***list, t_sp *sp, t_ray ray);
-t_tuple		reflect(t_tuple in, t_tuple normal);
+void		get_intersects_sp(t_intersect ***list, t_sp **sp, t_ray ray);
+t_tuple		normal_at(void *obj, t_tuple world_point, t_mask mask);
 t_tuple		normal_sp(t_sp *sp, t_tuple world_point);
+
+
+/*
+** Get color
+*/
+
+t_comps		prepare_comps(t_intersect *intersect, t_ray ray);
+t_tuple		lighting(t_material mat, t_l *l, t_comps comps);
+t_tuple		shade_hit(t_scene *scene, t_comps comps);
 
 /*
 ** Free memory

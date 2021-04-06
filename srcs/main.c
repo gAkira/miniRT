@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:48:45 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 23:50:54 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/05 17:09:20 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	print_scene(t_scene scene)
 			i, \
 			scene.pl[i]->coord.pos[0], scene.pl[i]->coord.pos[1], scene.pl[i]->coord.pos[2], \
 			scene.pl[i]->dir.pos[0], scene.pl[i]->dir.pos[1], scene.pl[i]->dir.pos[2], \
-			scene.pl[i]->color.pos[0], scene.pl[i]->color.pos[1], scene.pl[i]->color.pos[2]);
+			scene.pl[i]->mat.color.pos[0], scene.pl[i]->mat.color.pos[1], scene.pl[i]->mat.color.pos[2]);
 		i++;
 	}
 
@@ -108,7 +108,7 @@ void	print_scene(t_scene scene)
 			i, \
 			scene.sp[i]->coord.pos[0], scene.sp[i]->coord.pos[1], scene.sp[i]->coord.pos[2], \
 			scene.sp[i]->diam, \
-			scene.sp[i]->color.pos[0], scene.sp[i]->color.pos[1], scene.sp[i]->color.pos[2]);
+			scene.sp[i]->mat.color.pos[0], scene.sp[i]->mat.color.pos[1], scene.sp[i]->mat.color.pos[2]);
 		i++;
 	}
 
@@ -120,7 +120,7 @@ void	print_scene(t_scene scene)
 			scene.sq[i]->coord.pos[0], scene.sq[i]->coord.pos[1], scene.sq[i]->coord.pos[2], \
 			scene.sq[i]->dir.pos[0], scene.sq[i]->dir.pos[1], scene.sq[i]->dir.pos[2], \
 			scene.sq[i]->side, \
-			scene.sq[i]->color.pos[0], scene.sq[i]->color.pos[1], scene.sq[i]->color.pos[2]);
+			scene.sq[i]->mat.color.pos[0], scene.sq[i]->mat.color.pos[1], scene.sq[i]->mat.color.pos[2]);
 		i++;
 	}
 
@@ -132,7 +132,7 @@ void	print_scene(t_scene scene)
 			scene.cy[i]->coord.pos[0], scene.cy[i]->coord.pos[1], scene.cy[i]->coord.pos[2], \
 			scene.cy[i]->dir.pos[0], scene.cy[i]->dir.pos[1], scene.cy[i]->dir.pos[2], \
 			scene.cy[i]->diam, scene.cy[i]->height, \
-			scene.cy[i]->color.pos[0], scene.cy[i]->color.pos[1], scene.cy[i]->color.pos[2]);
+			scene.cy[i]->mat.color.pos[0], scene.cy[i]->mat.color.pos[1], scene.cy[i]->mat.color.pos[2]);
 		i++;
 	}
 
@@ -144,7 +144,7 @@ void	print_scene(t_scene scene)
 			scene.tr[i]->coord[0].pos[0], scene.tr[i]->coord[0].pos[1], scene.tr[i]->coord[0].pos[2], \
 			scene.tr[i]->coord[1].pos[0], scene.tr[i]->coord[1].pos[1], scene.tr[i]->coord[1].pos[2], \
 			scene.tr[i]->coord[2].pos[0], scene.tr[i]->coord[2].pos[1], scene.tr[i]->coord[2].pos[2], \
-			scene.tr[i]->color.pos[0], scene.tr[i]->color.pos[1], scene.tr[i]->color.pos[2]);
+			scene.tr[i]->mat.color.pos[0], scene.tr[i]->mat.color.pos[1], scene.tr[i]->mat.color.pos[2]);
 		i++;
 	}
 }

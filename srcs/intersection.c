@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 15:44:12 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/01 18:46:30 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/05 20:45:36 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ t_intersect	*hit(t_intersect **list)
 	while (list[i] && list[i]->t < 0.0 && !mx_equal(list[i]->t, 0.0))
 		i++;
 	return (list[i]);
+}
+
+void		free_intersections(t_intersect **list)
+{
+	int	i;
+
+	if (!list)
+		return ;
+	i = 0;
+	while (list[i])
+	{
+		free(list[i]);
+		i++;
+	}
 }
