@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/06 19:08:04 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/08 23:55:20 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_ray		ray(t_tuple origin, t_tuple direction);
 t_tuple		ray_pos(t_ray r, double t);
 t_ray		ray_transform(t_matrix m, t_ray r);
 t_tuple		reflect(t_tuple in, t_tuple normal);
+t_ray		ray_for_pixel(t_c *c, size_t px, size_t py);
 
 /*
 ** Intersection functions

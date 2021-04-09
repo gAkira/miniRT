@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 02:55:17 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/09 00:17:43 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,63 @@ static bool	allocate_in_scene(char ***c, t_scene *scene)
 
 static void	put_in_scene(char ***c, char ***params, t_scene *scene, int i)
 {
+	double	half_view;
+	double	aspect;
+
 	scene->c[i]->coord = mx_point(ft_atof(params[0][0]), \
 								ft_atof(params[0][1]), \
 								ft_atof(params[0][2]));
 	scene->c[i]->dir = mx_vector(ft_atof(params[1][0]), \
 								ft_atof(params[1][1]), \
 								ft_atof(params[1][2]));
-	scene->c[i]->fov = ft_atoi(c[i][3]);
+	scene->c[i]->fov = ft_atof(c[i][3]);
 	scene->c[i]->canvas = create_canvas(scene->res.x, scene->res.y);
+	half_view = tan((scene->c[i]->fov / 180.0 * M_PI) / 2.0);
+	aspect = (double)scene->res.x / (double)scene->res.y;
+	if (aspect > 1.0 || mx_equal(aspect, 1.0))
+	{
+		scene->c[i]->half_width = half_view;
+		scene->c[i]->half_height = half_view / aspect;
+	}
+	else
+	{
+		scene->c[i]->half_width = half_view * aspect;
+		scene->c[i]->half_width = half_view;
+	}
+	scene->c[i]->pixel_size = (scene->c[i]->half_width * 2) / scene->res.x;
+}
+
+/*
+** [STATIC] Function name:
+**    set_transform
+** Description:
+**    Set the transform matrix accordingly
+** Params:
+**    t_c *c -> object in which put the respective transformation
+** Return:
+**    ---
+*/
+
+static void	set_transform(t_c *c)
+{
+	c->transform = mx_multiply(\
+						mx_translate(\
+							c->coord.pos[0], \
+							c->coord.pos[1], \
+							c->coord.pos[2]), \
+						mx_multiply(\
+							mx_yrotate(\
+								acos(\
+									c->dir.pos[2] \
+									/ sqrt(\
+										pow(c->dir.pos[0], 2) \
+										+ pow(c->dir.pos[1], 2) \
+										+ pow(c->dir.pos[2], 2)))), \
+							mx_zrotate(\
+								atan(\
+									c->dir.pos[1] \
+									/ c->dir.pos[0]))));
+	c->inv_transform = mx_inv(c->transform);
 }
 
 /*
@@ -103,6 +152,7 @@ static bool	params_in_scene(char ***c, t_scene *scene, int i)
 		return (false);
 	}
 	put_in_scene(c, params, scene, i);
+	set_transform(scene->c[i]);
 	ft_free_split(&(params[0]));
 	ft_free_split(&(params[1]));
 	if (!scene->c[i]->canvas)

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 19:10:57 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/06 21:53:41 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:45:14 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct	s_c
 	double		half_width;
 	double		half_height;
 	double		pixel_size;
+
+	t_matrix	transform;
+	t_matrix	inv_transform;
 
 	t_img		*img;
 	t_canvas	*canvas;
