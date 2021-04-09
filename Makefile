@@ -6,7 +6,7 @@
 #    By: galves-d <galves-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/17 20:29:05 by galves-d          #+#    #+#              #
-#    Updated: 2021/04/08 23:55:35 by galves-d         ###   ########.fr        #
+#    Updated: 2021/04/10 00:21:48 by galves-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,8 @@ SRCS_FILES	=	main.c				\
 				color_at.c			\
 				setup_mlx.c			\
 				ray_for_pixel.c		\
+				intersect_pl.c		\
+				normal_pl.c			\
 
 # Location of the dependencies used
 SRCS_DIR	=	./srcs
