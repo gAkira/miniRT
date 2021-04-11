@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 20:59:31 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 22:23:34 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/11 03:18:48 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_tuple	shade_hit(t_scene *scene, t_comps comps)
 {
 	int			i;
+	bool		shadowed;
 	t_tuple		color;
 	t_material	mat;
 
@@ -34,7 +35,8 @@ t_tuple	shade_hit(t_scene *scene, t_comps comps)
 			mat = ((t_tr*)(comps.obj))->mat;
 		else
 			mat = material();
-		color = mx_sum(color, lighting(mat, scene->l[i], comps));
+		shadowed = is_shadowed(scene, comps.over_point);
+		color = mx_sum(color, lighting(mat, scene->l[i], comps, shadowed));
 		i++;
 	}
 	return (color);

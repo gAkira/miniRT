@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:20:54 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 20:58:44 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/11 03:14:18 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_comps	prepare_comps(t_intersect *intersect, t_ray ray)
 	}
 	else
 		comps.inside = false;
+	comps.over_point = mx_sum(comps.point, mx_prod(comps.normal, MX_EPSILON));
 	return (comps);
 }

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:38:42 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 19:34:10 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/11 03:08:14 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	set_spec(t_tuple *spec, t_material mat, t_l *l, t_comps comps)
 	}
 }
 
-t_tuple		lighting(t_material mat, t_l *l, t_comps comps)
+t_tuple		lighting(t_material mat, t_l *l, t_comps comps, bool shadowed)
 {
 	double	light_dot_normal;
 	t_tuple	effective_color;
@@ -39,7 +39,7 @@ t_tuple		lighting(t_material mat, t_l *l, t_comps comps)
 	comps.light = mx_unit(mx_sub(l->coord, comps.point));
 	ambient = mx_prod(effective_color, mat.ambient);
 	light_dot_normal = mx_dot(comps.light, comps.normal);
-	if (light_dot_normal < 0.0 && !mx_equal(light_dot_normal, 0))
+	if (shadowed || (light_dot_normal < 0.0 && !mx_equal(light_dot_normal, 0)))
 	{
 		diffuse = mx_vector(0, 0, 0);
 		specular = mx_vector(0, 0, 0);

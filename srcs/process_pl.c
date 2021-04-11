@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 22:15:55 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/02 20:27:00 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/11 03:21:04 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,39 @@ static void	put_in_scene(char ***pl, char ***params, t_scene *scene, int i)
 
 /*
 ** [STATIC] Function name:
+**    set_transform
+** Description:
+**    Set the transform matrix accordingly
+** Params:
+**    t_pl *pl -> object in which put the respective transformation
+** Return:
+**    ---
+*/
+
+static void     set_transform(t_pl *pl)
+{
+	pl->transform = mx_multiply(\
+						mx_translate(\
+							pl->coord.pos[0], \
+							pl->coord.pos[1], \
+							pl->coord.pos[2]), \
+						mx_multiply(\
+							mx_yrotate(\
+								acos(\
+									pl->dir.pos[2] \
+									/ sqrt(\
+										pow(pl->dir.pos[0], 2) \
+										+ pow(pl->dir.pos[1], 2) \
+										+ pow(pl->dir.pos[2], 2)))), \
+							mx_zrotate(\
+								atan(\
+									pl->dir.pos[1] \
+									/ pl->dir.pos[0]))));
+	pl->inv_transform = mx_inv(pl->transform);
+}
+
+/*
+** [STATIC] Function name:
 **    params_in_scene
 ** Description:
 **    Parse params
@@ -108,6 +141,7 @@ static bool	params_in_scene(char ***pl, t_scene *scene, int i)
 		return (false);
 	}
 	put_in_scene(pl, params, scene, i);
+	set_transform(scene->pl[i]);
 	ft_free_split(&(params[0]));
 	ft_free_split(&(params[1]));
 	ft_free_split(&(params[2]));

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 20:56:50 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/05 20:39:48 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:54:46 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 t_intersect **intersect_scene(t_scene *scene, t_ray ray)
 {
-	t_intersect	**intersections;
+	t_intersect	**list;
 
-	intersections = NULL;
-	get_intersects_sp(&intersections, scene->sp, ray);
+	list = NULL;
+	get_intersects_sp(&list, scene->sp, ray);
+	get_intersects_pl(&list, scene->pl, ray);
 	/*
-	get_intersects_pl(&intersections, scene->pl, ray);
-	get_intersects_sq(&intersections, scene->sq, ray);
-	get_intersects_cy(&intersections, scene->cy, ray);
-	get_intersects_tr(&intersections, scene->tr, ray);
+	get_intersects_sq(&list, scene->sq, ray);
+	get_intersects_cy(&list, scene->cy, ray);
+	get_intersects_tr(&list, scene->tr, ray);
 	*/
-	return (intersections);
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 18:44:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/10 00:22:52 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/11 03:22:34 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ t_intersect	**intersect_scene(t_scene *scene, t_ray ray);
 void		intersect_sp(t_intersect ***list, t_sp *sp, t_ray ray);
 void		intersect_pl(t_intersect ***list, t_pl *pl, t_ray ray);
 void		get_intersects_sp(t_intersect ***list, t_sp **sp, t_ray ray);
+void		get_intersects_pl(t_intersect ***list, t_pl **pl, t_ray ray);
 t_tuple		normal_at(void *obj, t_tuple world_point, t_mask mask);
 t_tuple		normal_sp(t_sp *sp, t_tuple world_point);
 t_tuple		normal_pl(t_pl *pl, t_tuple world_point);
@@ -117,8 +118,9 @@ t_tuple		normal_pl(t_pl *pl, t_tuple world_point);
 */
 
 t_comps		prepare_comps(t_intersect *intersect, t_ray ray);
-t_tuple		lighting(t_material mat, t_l *l, t_comps comps);
+t_tuple		lighting(t_material mat, t_l *l, t_comps comps, bool shadowed);
 t_tuple		shade_hit(t_scene *scene, t_comps comps);
+bool		is_shadowed(t_scene *scene, t_tuple point);
 
 /*
 ** Free memory
