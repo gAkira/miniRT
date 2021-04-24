@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 00:21:14 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 16:16:59 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:17:43 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 # define MX_EPSILON 0.00001
 
-typedef struct	s_tuple
+typedef struct s_tuple
 {
 	size_t		length;
 	double		pos[4];
 }				t_tuple;
 
-typedef struct	s_matrix
+typedef struct s_matrix
 {
 	size_t		rows;
 	size_t		cols;

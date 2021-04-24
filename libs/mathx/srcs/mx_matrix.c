@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 01:38:40 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/29 21:10:56 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:15:45 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	mx_bzero(void *addr, size_t size)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < size)
-		((char*)addr)[i++] = '\0';
+		((char *)addr)[i++] = '\0';
 }
 
 t_matrix	mx_matrix(size_t m, size_t n)

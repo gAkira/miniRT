@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 04:24:06 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/30 04:36:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:16:19 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ t_matrix	mx_zrotate(double rad)
 	matrix.pos[1][1] = cos(rad);
 	return (matrix);
 }
-
