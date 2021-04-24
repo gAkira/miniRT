@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 20:38:46 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/02 21:47:38 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:58:16 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ static double	get_decimal(const char *s)
 		return (dec);
 	while (ft_isdigit(s[i]))
 	{
-		dec += (double)(s[i] - '0') * my_pow(10, -i);
+		dec += my_pow(10, -i) * (double)(s[i] - '0');
 		i++;
 	}
 	return (dec);
 }
 
-double			ft_atof(const char *s)
+double	ft_atof(const char *s)
 {
 	int		i;
 	int		is_neg;

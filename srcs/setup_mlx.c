@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:34:25 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/06 23:55:47 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 19:39:58 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,20 @@ static bool	create_images(t_scene *scene, t_mlx *server)
 
 t_error		setup_mlx(t_scene *scene, t_mlx *server)
 {
+	int	size_x;
+	int	size_y;
+
 	ft_bzero(server, sizeof(t_mlx));
-	server->win.x = scene->res.x;
-	server->win.y = scene->res.y;
 	server->scene = scene;
 	if (!(server->mlx = mlx_init()))
 		return (CANT_SETUP_MLX);
+	mlx_get_screen_size(server->mlx, &size_x, &size_y);
+	if (scene->res.x > (size_t)size_x)
+		scene->res.x = (size_t)size_x;
+	if (scene->res.y > (size_t)size_y)
+		scene->res.y = (size_t)size_y;
+	server->win.x = scene->res.x;
+	server->win.y = scene->res.y;
 	if (!(server->win.id = mlx_new_window(server->mlx, (int)server->win.x, \
 										(int)server->win.y, scene->filename)))
 		return (CANT_SETUP_MLX);
