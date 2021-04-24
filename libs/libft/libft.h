@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:52:00 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/05 21:38:30 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:10:52 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
-char			*ft_strnstr(const char *haystack, const char *needle,
-		size_t len);
+char			*ft_strnstr(const char *haystack, const char *needle, \
+							size_t len);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
@@ -63,7 +63,7 @@ void			ft_putnbr_fd(int n, int fd);
 /*
 ** Libft : Part Bonus
 */
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -83,9 +83,9 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
 ** Libft : Additional Part
 */
 char			*ft_itoa_base(int nbr, const char *base);
-char			*ft_itoa_base_s(int nbr, const char *base,
+char			*ft_itoa_base_s(int nbr, const char *base, \
 									int is_signed);
-char			*ft_itoa_base_u(unsigned long int nbr, const char *base,
+char			*ft_itoa_base_u(unsigned long int nbr, const char *base, \
 									int is_signed);
 double			ft_atof(const char *s);
 void			ft_free_split(char ***s);

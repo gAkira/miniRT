@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 11:14:34 by galves-d          #+#    #+#             */
-/*   Updated: 2021/02/27 22:15:14 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 20:35:21 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	ft_isspace(char c)
 {
-	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' ||
+	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || \
 			c == '\r' || c == ' ');
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int						i;
 	int						signal;

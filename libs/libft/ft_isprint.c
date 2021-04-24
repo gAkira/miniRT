@@ -6,13 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:25:31 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/22 16:27:02 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 20:38:55 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	return (c >= ' ' && c <= '~');
 }

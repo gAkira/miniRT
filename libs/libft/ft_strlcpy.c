@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 23:17:19 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/25 16:06:36 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:47:44 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	size_t	len;
 
 	if (dst == 0 || src == 0)
 		return (0);

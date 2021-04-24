@@ -6,13 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 17:43:00 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/25 17:54:55 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:37:56 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *size)
+int	ft_lstsize(t_list *size)
 {
 	int		lst_counter;
 	t_list	*lst_it;

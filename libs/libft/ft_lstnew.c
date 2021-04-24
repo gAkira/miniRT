@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 17:21:29 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/25 20:10:19 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:37:23 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*element;
 
-	element = (t_list*)malloc(sizeof(t_list));
+	element = (t_list *)malloc(sizeof(t_list));
 	if (element == 0)
 		return (0);
 	element->content = content;

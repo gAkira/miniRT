@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:28:27 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/20 18:04:25 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:40:51 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	u_c = (unsigned char)c;
 	while (i < len)
 	{
-		*(unsigned char*)(b + i) = u_c;
+		*(unsigned char *)(b + i) = u_c;
 		i++;
 	}
 	return (b);

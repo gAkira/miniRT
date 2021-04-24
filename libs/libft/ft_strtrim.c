@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:07:43 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/25 16:18:05 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:55:18 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ static int	is_on_set(char c, char const *set)
 	return (0);
 }
 
-char		*create_substr(char const *s1, size_t start, size_t end)
+char	*create_substr(char const *s1, size_t start, size_t end)
 {
 	char	*sub;
 	size_t	len;
 
-	len = end > start ? end - start + 1 : 0;
-	sub = (char*)malloc((len + 1) * sizeof(char));
+	if (end > start)
+		len = end - start + 1;
+	else
+		len = 0;
+	sub = (char *)malloc((len + 1) * sizeof(char));
 	if (sub != 0)
 	{
 		if (len == 0)
@@ -43,7 +46,7 @@ char		*create_substr(char const *s1, size_t start, size_t end)
 	return (sub);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	start;

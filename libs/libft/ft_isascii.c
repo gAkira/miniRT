@@ -6,13 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 16:01:19 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/22 16:25:07 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:02:22 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 00 && c <= 0177);
 }

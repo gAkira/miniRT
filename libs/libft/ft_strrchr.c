@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 23:25:53 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/23 15:10:37 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:53:37 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ char	*ft_strrchr(const char *s, int c)
 	trgt = (char)c;
 	while (s[i] != '\0')
 	{
-		if (s[i] == trgt)
+		if (s[i++] == trgt)
 		{
 			found = 1;
-			addr = (char*)&s[i];
+			addr = (char *)&s[i - 1];
 		}
-		i++;
 	}
 	if (trgt == '\0')
 	{
 		found = 1;
-		addr = (char*)&s[i];
+		addr = (char *)&s[i];
 	}
-	return (found ? addr : 0);
+	if (found)
+		return (addr);
+	return (0);
 }

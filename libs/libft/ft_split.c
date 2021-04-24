@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:48:04 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/26 01:23:13 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:44:22 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	pop_tab(char const *s, char ***tab, char c, int words)
 			k = i;
 			while (!is_dlmt(s[k], c))
 				k++;
-			(*tab)[w_num] = (char*)malloc((k - i + 1) * sizeof(char));
+			(*tab)[w_num] = (char *)malloc((k - i + 1) * sizeof(char));
 			if ((*tab)[w_num] == 0)
 				return (w_num);
 			ft_strlcpy((*tab)[w_num], &s[i], k - i + 1);
@@ -77,7 +77,7 @@ static void	free_tab(char ***tab, int words)
 	free(*tab);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		num_words;
 	int		fail_word;
@@ -86,7 +86,7 @@ char		**ft_split(char const *s, char c)
 	if (s == 0)
 		return (0);
 	num_words = word_counter(s, c);
-	tab = (char**)malloc((num_words + 1) * sizeof(char*));
+	tab = (char **)malloc((num_words + 1) * sizeof(char *));
 	if (tab != 0)
 	{
 		fail_word = pop_tab(s, &tab, c, num_words);

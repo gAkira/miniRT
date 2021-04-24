@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:05:54 by galves-d          #+#    #+#             */
-/*   Updated: 2020/01/24 23:39:20 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:35:13 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ static void	shift(char *str, char c)
 	str[i + 1] = '\0';
 }
 
+static int	ternary_int(int condition, int val_true, int val_false)
+{
+	if (condition)
+		return (val_true);
+	return (val_false);
+}
+
 static int	pop_num(int nbr, char **num)
 {
 	int				i;
@@ -57,8 +64,8 @@ static int	pop_num(int nbr, char **num)
 	i = 0;
 	while ((u_nbr / pwr(10, i)) > 0)
 		i++;
-	signal = nbr < 0 ? 1 : 0;
-	*num = (char*)malloc((i + 1 + signal) * sizeof(char));
+	signal = ternary_int(nbr < 0, 1, 0);
+	*num = (char *)malloc((i + 1 + signal) * sizeof(char));
 	if (*num == 0)
 		return (0);
 	(*num)[0] = '\0';
@@ -72,20 +79,20 @@ static int	pop_num(int nbr, char **num)
 	return (1);
 }
 
-char		*ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
 	char	*num;
 
 	if (nbr == 0)
 	{
-		num = (char*)malloc(2 * sizeof(char));
+		num = (char *)malloc(2 * sizeof(char));
 		if (num != 0)
 			ft_strlcpy(num, "0", 2);
 		return (num);
 	}
 	if (nbr == -2147483648)
 	{
-		num = (char*)malloc(12 * sizeof(char));
+		num = (char *)malloc(12 * sizeof(char));
 		if (num != 0)
 			ft_strlcpy(num, "-2147483648", 12);
 		return (num);
