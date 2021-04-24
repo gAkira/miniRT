@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:05:54 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/24 23:14:35 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:24:47 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*lst_to_str(t_list *lst)
 	return (str);
 }
 
-char	*ft_itoa_base_u(int nbr, const char *base, int is_signed)
+char	*ft_itoa_base_u(unsigned long int nbr, const char *base, int is_signed)
 {
 	int				sign;
 	unsigned int	u_nbr;

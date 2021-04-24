@@ -6,7 +6,7 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 00:26:51 by galves-d          #+#    #+#             */
-/*   Updated: 2021/03/31 03:40:38 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:22:20 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ t_canvas	*create_canvas(size_t x, size_t y)
 	int			i;
 	t_canvas	*canvas;
 
-	if (!(canvas = (t_canvas*)ft_calloc(1, sizeof(t_canvas))))
+	if (!(canvas = (t_canvas *)ft_calloc(1, sizeof(t_canvas))))
 		return (NULL);
-	if (!(canvas->pos = (int**)malloc(y * sizeof(int*))))
+	if (!(canvas->pos = (int **)malloc(y * sizeof(int *))))
 		return (canvas);
 	i = 0;
 	while ((size_t)i < y)
 	{
-		if (!(canvas->pos[i] = (int*)malloc(x * sizeof(int))))
+		if (!(canvas->pos[i] = (int *)malloc(x * sizeof(int))))
 		{
 			while (--i >= 0)
 				free(canvas->pos[i]);

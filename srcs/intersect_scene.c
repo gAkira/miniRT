@@ -6,13 +6,13 @@
 /*   By: galves-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 20:56:50 by galves-d          #+#    #+#             */
-/*   Updated: 2021/04/10 15:54:46 by galves-d         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:21:10 by galves-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersect **intersect_scene(t_scene *scene, t_ray ray)
+t_intersect	**intersect_scene(t_scene *scene, t_ray ray)
 {
 	t_intersect	**list;
 
